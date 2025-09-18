@@ -1,0 +1,163 @@
+@font-face {
+  font-family: 'd3icons';
+  src: url('font/d3icons.eot?28412042');
+  src: url('font/d3icons.eot?28412042#iefix') format('embedded-opentype'),
+       url('font/d3icons.woff2?28412042') format('woff2'),
+       url('font/d3icons.woff?28412042') format('woff'),
+       url('font/d3icons.ttf?28412042') format('truetype'),
+       url('font/d3icons.svg?28412042#d3icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* @media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'd3icons';
+    src: url('font/d3icons.svg?28412042#fontello') format('svg');
+  }
+} */
+.ph.ph-algae,
+.ph.ph-bacteria-morphology,
+.ph.ph-bacterium,
+.ph.ph-biohazard,
+.ph.ph-cell,
+.ph.ph-chart-tree-map,
+.ph.ph-chip-ai,
+.ph.ph-chromosome,
+.ph.ph-chromosome-cut,
+.ph.ph-chromosome-locus,
+.ph.ph-chromosomes,
+.ph.ph-compound,
+.ph.ph-dna-location,
+.ph.ph-dna-search,
+.ph.ph-dolly,
+.ph.ph-drop-percent,
+.ph.ph-fatty-acids,
+.ph.ph-flagella,
+.ph.ph-flask-bacterium,
+.ph.ph-flask-check,
+.ph.ph-flask-compound,
+.ph.ph-flask-pen,
+.ph.ph-flask-plus,
+.ph.ph-flask-plus-circle,
+.ph.ph-flask-vial,
+.ph.ph-fungi,
+.ph.ph-gas,
+.ph.ph-microbes,
+.ph.ph-microscope,
+.ph.ph-mortar-pestle,
+.ph.ph-open-access,
+.ph.ph-orcid,
+.ph.ph-phage,
+.ph.ph-plant-virus,
+.ph.ph-plasmid,
+.ph.ph-protein,
+.ph.ph-protist,
+.ph.ph-ranking,
+.ph.ph-rna,
+.ph.ph-ruler-combined,
+.ph.ph-sort,
+.ph.ph-sort-down,
+.ph.ph-sort-up,
+.ph.ph-streptococcus,
+.ph.ph-taxonomy,
+.ph.ph-timeline,
+.ph.ph-timeline-list,
+.ph.ph-unfilter,
+.ph.ph-vials,
+.ph.ph-yeast,
+.ph.ph-by,
+.ph.ph-cc,
+.ph.ph-archaea,
+.ph.ph-sidebar-collapse,
+.ph.ph-rdf {
+  font-family: 'd3icons' !important;
+  width: 1em;
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: -0.1em;
+}
+
+
+
+.ph-algae:before { content: '\e800'; } /* '' */
+.ph-archaea:before { content: '\e801'; } /* '' */
+.ph-bacteria-morphology:before { content: '\e802'; } /* '' */
+.ph-bacterium:before { content: '\e803'; } /* '' */
+.ph-by:before { content: '\e804'; } /* '' */
+.ph-cc:before { content: '\e805'; } /* '' */
+.ph-chip-ai:before { content: '\e806'; } /* '' */
+.ph-flask-bacterium:before { content: '\e808'; } /* '' */
+.ph-chart-tree-map:before { content: '\e809'; } /* '' */
+.ph-chromosome:before { content: '\e80a'; } /* '' */
+.ph-dna-location:before { content: '\e80b'; } /* '' */
+.ph-chromosome-locus:before { content: '\e80c'; } /* '' */
+.ph-dolly:before { content: '\e80d'; } /* '' */
+.ph-chromosomes:before { content: '\e80e'; } /* '' */
+.ph-compound:before { content: '\e80f'; } /* '' */
+.ph-flagella:before { content: '\e810'; } /* '' */
+.ph-microbes:before { content: '\e811'; } /* '' */
+.ph-gas:before { content: '\e812'; } /* '' */
+.ph-dna-search:before { content: '\e813'; } /* '' */
+.ph-flask-compound:before { content: '\e814'; } /* '' */
+.ph-cell:before { content: '\e815'; } /* '' */
+.ph-plant-virus:before { content: '\e816'; } /* '' */
+.ph-drop-percent:before { content: '\e817'; } /* '' */
+.ph-flask-plus-circle:before { content: '\e818'; } /* '' */
+.ph-flask-plus:before { content: '\e819'; } /* '' */
+.ph-fatty-acids:before { content: '\e81a'; } /* '' */
+.ph-flask-check:before { content: '\e81b'; } /* '' */
+.ph-fungi:before { content: '\e81c'; } /* '' */
+.ph-ranking:before { content: '\e81d'; } /* '' */
+.ph-mortar-pestle:before { content: '\e81e'; } /* '' */
+.ph-open-access:before { content: '\e81f'; } /* '' */
+.ph-orcid:before { content: '\e820'; } /* '' */
+.ph-sidebar-collapse:before { content: '\e821'; } /* '' */
+.ph-flask-vial:before { content: '\e822'; } /* '' */
+.ph-plasmid:before { content: '\e823'; } /* '' */
+.ph-streptococcus:before { content: '\e824'; } /* '' */
+.ph-protein:before { content: '\e825'; } /* '' */
+.ph-phage:before { content: '\e826'; } /* '' */
+.ph-vials:before { content: '\e827'; } /* '' */
+.ph-chromosome-cut:before { content: '\e828'; } /* '' */
+.ph-flask-pen:before { content: '\e829'; } /* '' */
+.ph-rdf:before { content: '\e82a'; } /* '' */
+.ph-protist:before { content: '\e82b'; } /* '' */
+.ph-sort:before { content: '\e82c'; } /* '' */
+.ph-rna:before { content: '\e82d'; } /* '' */
+.ph-ruler-combined:before { content: '\e82f'; } /* '' */
+.ph-sort-down:before { content: '\e830'; } /* '' */
+.ph-sort-up:before { content: '\e831'; } /* '' */
+.ph-taxonomy:before { content: '\e832'; } /* '' */
+.ph-timeline:before { content: '\e833'; } /* '' */
+.ph-unfilter:before { content: '\e834'; } /* '' */
+.ph-timeline-list:before { content: '\e835'; } /* '' */
+.ph-yeast:before { content: '\e836'; } /* '' */
+
+.ph-lg {  
+  font-size: 1.25em;
+  line-height: .05em;
+  vertical-align: -.075em;
+}
+.ph-2x {
+  font-size: 2em;
+}
+.ph-3x {
+  font-size: 3em;
+}
+.ph-4x {
+  font-size: 4em;
+}
+.ph-fw {
+  text-align: center;
+  width: 1.25em;
+}

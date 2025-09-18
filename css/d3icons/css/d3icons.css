@@ -1,0 +1,109 @@
+@font-face {
+  font-family: 'd3icons';
+  src: url('../font/d3icons.eot?28412042');
+  src: url('../font/d3icons.eot?28412042#iefix') format('embedded-opentype'),
+       url('../font/d3icons.woff2?28412042') format('woff2'),
+       url('../font/d3icons.woff?28412042') format('woff'),
+       url('../font/d3icons.ttf?28412042') format('truetype'),
+       url('../font/d3icons.svg?28412042#d3icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'd3icons';
+    src: url('../font/d3icons.svg?28412042#d3icons') format('svg');
+  }
+}
+*/
+[class^="ph-"]:before, [class*=" ph-"]:before {
+  font-family: "d3icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.ph-__algae:before { content: '\e800'; } /* '' */
+.ph-__archaea:before { content: '\e801'; } /* '' */
+.ph-__bacteria-morphology:before { content: '\e802'; } /* '' */
+.ph-__bacterium:before { content: '\e803'; } /* '' */
+.ph-__by:before { content: '\e804'; } /* '' */
+.ph-__cc:before { content: '\e805'; } /* '' */
+.ph-__chip-ai:before { content: '\e806'; } /* '' */
+.ph-__flask-bacterium:before { content: '\e808'; } /* '' */
+.ph-__chart-tree-map:before { content: '\e809'; } /* '' */
+.ph-__chromosome:before { content: '\e80a'; } /* '' */
+.ph-__dna-location:before { content: '\e80b'; } /* '' */
+.ph-__chromosome-locus:before { content: '\e80c'; } /* '' */
+.ph-__dolly:before { content: '\e80d'; } /* '' */
+.ph-__chromosomes:before { content: '\e80e'; } /* '' */
+.ph-__compound:before { content: '\e80f'; } /* '' */
+.ph-__flagella:before { content: '\e810'; } /* '' */
+.ph-__microbes:before { content: '\e811'; } /* '' */
+.ph-__gas:before { content: '\e812'; } /* '' */
+.ph-__dna-search:before { content: '\e813'; } /* '' */
+.ph-__flask-compound:before { content: '\e814'; } /* '' */
+.ph-__cell:before { content: '\e815'; } /* '' */
+.ph-__plant-virus:before { content: '\e816'; } /* '' */
+.ph-__drop-percent:before { content: '\e817'; } /* '' */
+.ph-__flask-plus-circle:before { content: '\e818'; } /* '' */
+.ph-__flask-plus:before { content: '\e819'; } /* '' */
+.ph-__fatty-acids:before { content: '\e81a'; } /* '' */
+.ph-__flask-check:before { content: '\e81b'; } /* '' */
+.ph-__fungi:before { content: '\e81c'; } /* '' */
+.ph-__ranking:before { content: '\e81d'; } /* '' */
+.ph-__mortar-pestle:before { content: '\e81e'; } /* '' */
+.ph-__open-access:before { content: '\e81f'; } /* '' */
+.ph-__orcid:before { content: '\e820'; } /* '' */
+.ph-__sidebar-collapse:before { content: '\e821'; } /* '' */
+.ph-__flask-vial:before { content: '\e822'; } /* '' */
+.ph-__plasmid:before { content: '\e823'; } /* '' */
+.ph-__streptococcus:before { content: '\e824'; } /* '' */
+.ph-__protein:before { content: '\e825'; } /* '' */
+.ph-__phage:before { content: '\e826'; } /* '' */
+.ph-__vials:before { content: '\e827'; } /* '' */
+.ph-__chromosome-cut:before { content: '\e828'; } /* '' */
+.ph-__flask-pen:before { content: '\e829'; } /* '' */
+.ph-__rdf:before { content: '\e82a'; } /* '' */
+.ph-__protist:before { content: '\e82b'; } /* '' */
+.ph-__sort:before { content: '\e82c'; } /* '' */
+.ph-__rna:before { content: '\e82d'; } /* '' */
+.ph-__ruler-combined:before { content: '\e82f'; } /* '' */
+.ph-__sort-down:before { content: '\e830'; } /* '' */
+.ph-__sort-up:before { content: '\e831'; } /* '' */
+.ph-__taxonomy:before { content: '\e832'; } /* '' */
+.ph-__timeline:before { content: '\e833'; } /* '' */
+.ph-__unfilter:before { content: '\e834'; } /* '' */
+.ph-__timeline-list:before { content: '\e835'; } /* '' */
+.ph-__yeast:before { content: '\e836'; } /* '' */

@@ -1,0 +1,3261 @@
+@prefix : <https://purl.dsmz.de/schema/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@base <https://purl.dsmz.de/schema/> .
+
+<https://purl.dsmz.de/schema/> rdf:type owl:Ontology ;
+                                dc:creator "Julia Koblitz, DSMZ" ;
+                                dc:title "DSMZ Digital Diversity Ontology (D3O)" ;
+                                rdfs:comment "The DSMZ Digital Diversity Ontology (D3O) is an ontology designed to standardize and integrate data related to microbial diversity and associated resources within the context of the DSMZ’s Digital Diversity Knowledge Graph. This ontology provides a structured framework to represent various aspects of microbial data, including taxonomic information, strain properties, cultivation conditions, and media links. D3O facilitates cross-referencing between internal DSMZ datasets and external biological resources, supporting enhanced data discovery, interoperability, and research in microbiology, genomics, and metabolomics. The ontology includes both object properties, which link entities such as bacterial strains to external resources (e.g., literature references or media descriptions), and data properties, which associate entities with literal values (e.g., taxonomic identifiers, growth conditions). Designed for use in RDF-based knowledge graphs, D3O supports flexible integration with other life science ontologies, promoting consistency and reuse in the broader scientific community."@en ;
+                                owl:versionInfo 1.1 ;
+                                :browsingUI "https://bioportal.bioontology.org/ontologies/D3O" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty ;
+         rdfs:range xsd:string .
+
+
+###  https://purl.dsmz.de/schema/browsingUI
+:browsingUI rdf:type owl:AnnotationProperty .
+
+
+###  https://purl.dsmz.de/schema/date
+:date rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://purl.dsmz.de/schema/describesStrain
+:describesStrain rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:comment "A property indicating a relationship where a particular entity (e.g., a document or dataset) provides a description or detailed information about a microbial strain."@en ;
+                 rdfs:label "describes strain"@en .
+
+
+###  https://purl.dsmz.de/schema/hasMediaLink
+:hasMediaLink rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:comment "A property that links a strain or organism to cultivation media, representing the relationship between a biological entity and the culture medium used for its growth or study."@en ;
+              rdfs:label "has media link"@en .
+
+
+###  https://purl.dsmz.de/schema/hasReference
+:hasReference rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:comment "A property that relates an entity (e.g., strain, dataset, or publication) to a reference or citation that provides supporting information or evidence."@en ;
+              rdfs:label "has reference"@en .
+
+
+###  https://purl.dsmz.de/schema/refersTo
+:refersTo rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:comment "A property indicating a relationship where one entity (e.g., a document or dataset) refers to or mentions another entity, establishing a link between them."@en ;
+          rdfs:label "refers to"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#topDataProperty
+owl:topDataProperty rdfs:label "TopDataProperty"@en .
+
+
+###  https://purl.dsmz.de/schema/catalyzes
+:catalyzes rdf:type owl:DatatypeProperty .
+
+
+###  https://purl.dsmz.de/schema/fromSequenceDB
+:fromSequenceDB rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property indicating the sequence database from which the genetic information is sourced, such as GenBank, ENA, or DDBJ."@en ;
+                rdfs:label "from sequence database"@en .
+
+
+###  https://purl.dsmz.de/schema/growthObserved
+:growthObserved rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property indicating whether growth was observed under specific conditions, such as the presence or absence of nutrients, media, or environmental factors."@en ;
+                rdfs:label "growth observed"@en .
+
+
+###  https://purl.dsmz.de/schema/hasAbility
+:hasAbility rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:comment "A property representing a relationship where an entity possesses a certain ability or capability, such as performing a function or action."@en ;
+            rdfs:label "has ability"@en .
+
+
+###  https://purl.dsmz.de/schema/hasActivity
+:hasActivity rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment "A property indicating a relationship where an entity participates in or exhibits a certain activity, typically referring to biological, chemical, or physical processes."@en ;
+             rdfs:label "has activity"@en .
+
+
+###  https://purl.dsmz.de/schema/hasAssemblyLevel
+:hasAssemblyLevel rdf:type owl:DatatypeProperty ;
+                  rdfs:comment "A property linking an entity to the assembly level of the genome, such as complete, draft, or scaffold level."@en ;
+                  rdfs:label "has assembly level"@en .
+
+
+###  https://purl.dsmz.de/schema/hasBacDiveID
+:hasBacDiveID rdf:type owl:DatatypeProperty ;
+              rdfs:comment "A property linking an entity to the BacDive identifier, a unique number used to reference strains in the BacDive database."@en ;
+              rdfs:label "has BacDive ID"@en .
+
+
+###  https://purl.dsmz.de/schema/hasBiosafetyLevel
+:hasBiosafetyLevel rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:comment "A property linking an entity to its biosafety level, which represents the containment protocols and safety measures required to handle biological materials, typically classified from BSL-1 to BSL-4."@en ;
+                   rdfs:label "has biosafety level"@en .
+
+
+###  https://purl.dsmz.de/schema/hasBookTitle
+:hasBookTitle rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:comment "A property that links bibliographic information to the title of a book. It specifies the name of the book being referenced."@en ;
+              rdfs:label "has book title"@en .
+
+
+###  https://purl.dsmz.de/schema/hasCatalogueID
+:hasCatalogueID rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to a specific catalogue identifier, used for referencing the entity in a biological resource center or database catalogue."@en ;
+                rdfs:label "has catalogue ID"@en .
+
+
+###  https://purl.dsmz.de/schema/hasCatalogueInstitution
+:hasCatalogueInstitution rdf:type owl:DatatypeProperty ;
+                         rdfs:comment "A property linking an entity to the institution responsible for the catalogue entry, typically referring to a biological resource center or repository that holds or maintains the sample."@en ;
+                         rdfs:label "has catalogue institution"@en .
+
+
+###  https://purl.dsmz.de/schema/hasClass
+:hasClass rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :hasTaxonomicRank ;
+          rdfs:comment "A property linking an entity to the taxonomic class it belongs to, which is a rank in the hierarchy between phylum and order."@en ;
+          rdfs:label "has class"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyColor
+:hasColonyColor rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to the color of a microbial colony, which can be an important phenotypic characteristic for identification and classification."@en ;
+                rdfs:label "has colony color"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyLength
+:hasColonyLength rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "A property linking an entity to the measured length of a microbial colony, often used to describe its size and physical dimensions."@en ;
+                 rdfs:label "has colony length"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyLengthRangeEnd
+:hasColonyLengthRangeEnd rdf:type owl:DatatypeProperty ;
+                         rdfs:comment "A property indicating the maximum length of a microbial colony within a specified range, providing a boundary for the possible size of the colony."@en ;
+                         rdfs:label "has colony length range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyLengthRangeStart
+:hasColonyLengthRangeStart rdf:type owl:DatatypeProperty ;
+                           rdfs:comment "A property indicating the minimum length of a microbial colony within a specified range, providing a boundary for the possible size of the colony."@en ;
+                           rdfs:label "has colony length range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyShape
+:hasColonyShape rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to the shape of a microbial colony, which is a key feature in microbial identification and classification."@en ;
+                rdfs:label "has colony shape"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyWidth
+:hasColonyWidth rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to the measured width of a microbial colony, often used to describe its size and physical dimensions."@en ;
+                rdfs:label "has colony width"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyWidthRangeEnd
+:hasColonyWidthRangeEnd rdf:type owl:DatatypeProperty ;
+                        rdfs:comment "A property indicating the maximum width of a microbial colony within a specified range, providing a boundary for the possible size of the colony."@en ;
+                        rdfs:label "has colony width range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasColonyWidthRangeStart
+:hasColonyWidthRangeStart rdf:type owl:DatatypeProperty ;
+                          rdfs:comment "A property indicating the minimum width of a microbial colony within a specified range, providing a boundary for the possible size of the colony."@en ;
+                          rdfs:label "has colony width range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasCountry
+:hasCountry rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :hasLocation ;
+            rdfs:comment "A property linking an entity to a specific country, indicating the nation where the entity is located or was collected from."@en ;
+            rdfs:label "has country"@en .
+
+
+###  https://purl.dsmz.de/schema/hasDesignation
+:hasDesignation rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to the strain's official designation or label, often reflecting its origin or notable characteristics."@en ;
+                rdfs:label "has designation"@en .
+
+
+###  https://purl.dsmz.de/schema/hasDocumentType
+:hasDocumentType rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:comment "A property that links bibliographic information to the type of document, such as a journal article, book, or thesis."@en ;
+                 rdfs:label "has document type"@en .
+
+
+###  https://purl.dsmz.de/schema/hasDomain
+:hasDomain rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :hasTaxonomicRank ;
+           rdfs:comment "A property linking an entity to its taxonomic domain, the highest rank in the biological classification system, such as Bacteria, Archaea, or Eukarya."@en ;
+           rdfs:label "has domain"@en .
+
+
+###  https://purl.dsmz.de/schema/hasECNumber
+:hasECNumber rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment "A property linking an entity to the Enzyme Commission (EC) number of an enzyme, which is a numerical classification scheme for enzymes based on the reactions they catalyze."@en ;
+             rdfs:label "has EC number"@en .
+
+
+###  https://purl.dsmz.de/schema/hasEditor
+:hasEditor rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:comment "A property linking bibliographic information to the editor(s) of a document, such as a book or journal. The editor is responsible for overseeing the content."@en ;
+           rdfs:label "has editor"@en .
+
+
+###  https://purl.dsmz.de/schema/hasEnzyme
+:hasEnzyme rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:comment "A property linking an entity to an enzyme, typically representing a relationship where the enzyme is involved in a biological or biochemical process."@en ;
+           rdfs:label "has enzyme"@en .
+
+
+###  https://purl.dsmz.de/schema/hasFamily
+:hasFamily rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :hasTaxonomicRank ;
+           rdfs:comment "A property linking an entity to its taxonomic family, a rank in the classification hierarchy between order and genus."@en ;
+           rdfs:label "has family"@en .
+
+
+###  https://purl.dsmz.de/schema/hasFlagellumArrangement
+:hasFlagellumArrangement rdf:type owl:DatatypeProperty ;
+                         rdfs:comment "A property linking an entity to the arrangement of flagella, such as polar, peritrichous, or lophotrichous, which is important for motility classification."@en ;
+                         rdfs:label "has flagellum arrangement"@en .
+
+
+###  https://purl.dsmz.de/schema/hasGCContentRangeEnd
+:hasGCContentRangeEnd rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :hasGCInformation ;
+                      rdfs:comment "A property indicating the maximum percentage of guanine and cytosine bases in a given DNA sequence range, providing an upper boundary for the GC content."@en ;
+                      rdfs:label "has GC content range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasGCContentRangeStart
+:hasGCContentRangeStart rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :hasGCInformation ;
+                        rdfs:comment "A property indicating the minimum percentage of guanine and cytosine bases in a given DNA sequence range, providing a lower boundary for the GC content."@en ;
+                        rdfs:label "has GC content range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasGCInformation
+:hasGCInformation rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:comment "A property linking an entity to GC content information, which represents the proportion of guanine (G) and cytosine (C) bases in a DNA sequence, commonly used to assess DNA stability and characteristics."@en ;
+                  rdfs:label "has GC content"@en .
+
+
+###  https://purl.dsmz.de/schema/hasGCMethod
+:hasGCMethod rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment "A property linking an entity to the method used for determining the GC content of a DNA sequence, such as thermal denaturation or chromatography-based techniques."@en ;
+             rdfs:label "has GC method"@en .
+
+
+###  https://purl.dsmz.de/schema/hasGenus
+:hasGenus rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :hasTaxonomicRank ;
+          rdfs:comment "A property linking an entity to its taxonomic genus, a rank in the classification hierarchy just above species."@en ;
+          rdfs:label "has genus"@en .
+
+
+###  https://purl.dsmz.de/schema/hasGramStain
+:hasGramStain rdf:type owl:DatatypeProperty ;
+              rdfs:comment "A property linking an entity to its Gram stain result, which indicates whether it is Gram-positive or Gram-negative based on the structure of its cell wall."@en ;
+              rdfs:label "has Gram stain"@en .
+
+
+###  https://purl.dsmz.de/schema/hasHemolysisAbility
+:hasHemolysisAbility rdf:type owl:DatatypeProperty ;
+                     rdfs:comment "A property indicating whether an organism has the ability to cause hemolysis, the breakdown of red blood cells, in its environment."@en ;
+                     rdfs:label "has hemolysis ability"@en .
+
+
+###  https://purl.dsmz.de/schema/hasHemolysisType
+:hasHemolysisType rdf:type owl:DatatypeProperty ;
+                  rdfs:comment "A property linking an entity to the specific type of hemolysis observed, such as alpha, beta, or gamma hemolysis, based on the degree of red blood cell destruction."@en ;
+                  rdfs:label "has hemolysis type"@en .
+
+
+###  https://purl.dsmz.de/schema/hasISBN
+:hasISBN rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:comment "A property linking bibliographic information to the ISBN (International Standard Book Number) of a book, which is a unique identifier for published works."@en ;
+         rdfs:label "has ISBN"@en .
+
+
+###  https://purl.dsmz.de/schema/hasIncubationPeriod
+:hasIncubationPeriod rdf:type owl:DatatypeProperty ;
+                     rdfs:comment "A property linking an entity to the specific period of time an organism or sample is incubated under controlled conditions."@en ;
+                     rdfs:label "has incubation period"@en .
+
+
+###  https://purl.dsmz.de/schema/hasIncubationPeriodRangeEnd
+:hasIncubationPeriodRangeEnd rdf:type owl:DatatypeProperty ;
+                             rdfs:comment "A property indicating the maximum duration of the incubation period within a specified range."@en ;
+                             rdfs:label "has incubation period range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasIncubationPeriodRangeStart
+:hasIncubationPeriodRangeStart rdf:type owl:DatatypeProperty ;
+                               rdfs:comment "A property indicating the minimum duration of the incubation period within a specified range."@en ;
+                               rdfs:label "has incubation period range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasJournalAbbreviation
+:hasJournalAbbreviation rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:comment "A property linking bibliographic information to the abbreviated form of a journal's name, often used in citations for space-saving purposes."@en ;
+                        rdfs:label "has journal abbreviation"@en .
+
+
+###  https://purl.dsmz.de/schema/hasJournalFullName
+:hasJournalFullName rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:comment "A property linking bibliographic information to the full name of a journal, used to provide the complete title in references and citations."@en ;
+                    rdfs:label "has journal full name"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLPSNID
+:hasLPSNID rdf:type owl:DatatypeProperty ;
+           rdfs:comment "A property linking an entity to the LPSN (List of Prokaryotic Names with Standing in Nomenclature) identifier for a strain, used for taxonomic classification and reference."@en ;
+           rdfs:label "has LPSN ID"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLatitude
+:hasLatitude rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :hasLocation ;
+             rdfs:comment "A property linking an entity to its latitude coordinate, representing its north-south position on the Earth's surface."@en ;
+             rdfs:label "has latitude"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLength
+:hasLength rdf:type owl:DatatypeProperty ;
+           rdfs:comment "A property linking an entity to the measured length of a cell or organism, providing important information about its size and morphology."@en ;
+           rdfs:label "has length"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLengthRangeEnd
+:hasLengthRangeEnd rdf:type owl:DatatypeProperty ;
+                   rdfs:comment "A property indicating the maximum length within a specific range for a cell or organism, used to define its size variability."@en ;
+                   rdfs:label "has length range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLengthRangeStart
+:hasLengthRangeStart rdf:type owl:DatatypeProperty ;
+                     rdfs:comment "A property indicating the minimum length within a specific range for a cell or organism, used to define its size variability."@en ;
+                     rdfs:label "has length range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLengthUnit
+:hasLengthUnit rdf:type owl:DatatypeProperty ;
+               rdfs:comment "A property linking an entity to the unit of measurement used for length, such as micrometers (µm) or millimeters (mm)."@en ;
+               rdfs:label "has length unit"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLink
+:hasLink rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:comment "A property linking an entity to a specific URL or reference that provides further information or external resources related to the entity."@en ;
+         rdfs:label "has link"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLocation
+:hasLocation rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment "A property linking an entity to its physical or geographical location, such as a place or region where it is found or originated from."@en ;
+             rdfs:label "has location"@en .
+
+
+###  https://purl.dsmz.de/schema/hasLongitude
+:hasLongitude rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :hasLocation ;
+              rdfs:comment "A property linking an entity to its longitude coordinate, representing its east-west position on the Earth's surface."@en ;
+              rdfs:label "has longitude"@en .
+
+
+###  https://purl.dsmz.de/schema/hasMediaDiveID
+:hasMediaDiveID rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to a unique identifier from the MediaDive database, representing the specific media used in growth experiments or cultivation."@en ;
+                rdfs:label "has MediaDive ID"@en .
+
+
+###  https://purl.dsmz.de/schema/hasMediumComposition
+:hasMediumComposition rdf:type owl:DatatypeProperty ;
+                      rdfs:comment "A property linking an entity to the composition of the growth medium, including nutrients, chemicals, and any other ingredients required for microbial growth."@en ;
+                      rdfs:label "has medium composition"@en .
+
+
+###  https://purl.dsmz.de/schema/hasMediumGrowth
+:hasMediumGrowth rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "A property linking an entity to the type of growth observed in a specific medium, which may vary based on nutrient availability and environmental conditions."@en ;
+                 rdfs:label "has medium growth"@en .
+
+
+###  https://purl.dsmz.de/schema/hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:label "has name"@en .
+
+
+###  https://purl.dsmz.de/schema/hasOrder
+:hasOrder rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :hasTaxonomicRank ;
+          rdfs:comment "A property linking an entity to its taxonomic order, a rank in the classification hierarchy between class and family."@en ;
+          rdfs:label "has order"@en .
+
+
+###  https://purl.dsmz.de/schema/hasOxygenTolerance
+:hasOxygenTolerance rdf:type owl:DatatypeProperty ;
+                    rdfs:comment "A property indicating the oxygen tolerance of a microorganism, such as whether it is aerobic, anaerobic, or facultative anaerobe, based on growth conditions."@en ;
+                    rdfs:label "has oxygen tolerance"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPHRangeEnd
+:hasPHRangeEnd rdf:type owl:DatatypeProperty ;
+               rdfs:comment "A property indicating the maximum pH value within a range where a microorganism can grow or survive."@en ;
+               rdfs:label "has pH range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPHRangeStart
+:hasPHRangeStart rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "A property indicating the minimum pH value within a range where a microorganism can grow or survive."@en ;
+                 rdfs:label "has pH range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPHRangeType
+:hasPHRangeType rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to the type of pH range under which a microorganism can grow, such as optimum, minimum, or maximum pH conditions."@en ;
+                rdfs:label "has pH range type"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPageRange
+:hasPageRange rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:comment "A property linking bibliographic information to the page range of an article or document, specifying the start and end pages in a publication."@en ;
+              rdfs:label "has page range"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPhylum
+:hasPhylum rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :hasTaxonomicRank ;
+           rdfs:comment "A property linking an entity to its taxonomic phylum, a rank in the classification hierarchy between domain and class."@en ;
+           rdfs:label "has phylum"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPigmentColor
+:hasPigmentColor rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "A property that links an entity to the color of a pigment produced by an organism, such as red, yellow, or green."@en ;
+                 rdfs:label "has pigment color"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPigmentName
+:hasPigmentName rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property linking an entity to the specific name of a pigment produced by an organism, such as carotenoid, melanin, or chlorophyll."@en ;
+                rdfs:label "has pigment name"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPigmentProduction
+:hasPigmentProduction rdf:type owl:DatatypeProperty ;
+                      rdfs:comment "A property indicating the level or quantity of pigment production in an organism, which may be quantified or described qualitatively."@en ;
+                      rdfs:label "has pigment production"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPubMedID
+:hasPubMedID rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment "A property linking an entity to its unique identifier in the PubMed database, which is used to reference scientific literature in the field of life sciences and biomedical research."@en ;
+             rdfs:label "has PubMed ID"@en .
+
+
+###  https://purl.dsmz.de/schema/hasPublisher
+:hasPublisher rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:comment "A property linking bibliographic information to the publisher of a document, which is the organization or company responsible for printing or distributing the work."@en ;
+              rdfs:label "has publisher"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSaltConcentration
+:hasSaltConcentration rdf:type owl:DatatypeProperty ;
+                      rdfs:comment "A property linking an entity to the specific salt concentration in a medium or environment where the organism is grown or studied, often measured in parts per thousand (ppt) or percent."@en ;
+                      rdfs:label "has salt concentration"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSaltConcentrationRangeEnd
+:hasSaltConcentrationRangeEnd rdf:type owl:DatatypeProperty ;
+                              rdfs:comment "A property indicating the maximum salt concentration within a specified range in which an organism can survive or grow."@en ;
+                              rdfs:label "has salt concentration range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSaltConcentrationRangeStart
+:hasSaltConcentrationRangeStart rdf:type owl:DatatypeProperty ;
+                                rdfs:comment "A property indicating the minimum salt concentration within a specified range in which an organism can survive or grow."@en ;
+                                rdfs:label "has salt concentration range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSaltConcentrationUnit
+:hasSaltConcentrationUnit rdf:type owl:DatatypeProperty ;
+                          rdfs:comment "A property linking an entity to the unit of measurement used for salt concentration, such as parts per thousand (ppt) or percent (%)."@en ;
+                          rdfs:label "has salt concentration unit"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSaltType
+:hasSaltType rdf:type owl:DatatypeProperty ;
+             rdfs:comment "A property linking an entity to the specific type of salt present in the medium or environment, such as sodium chloride (NaCl) or magnesium sulfate (MgSO4)."@en ;
+             rdfs:label "has salt type"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSequenceAccession
+:hasSequenceAccession rdf:type owl:DatatypeProperty ;
+                      rdfs:comment "A property linking an entity to the unique sequence accession number used in databases to reference the genetic sequence."@en ;
+                      rdfs:label "has sequence accession"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSequenceLength
+:hasSequenceLength rdf:type owl:DatatypeProperty ;
+                   rdfs:comment "A property indicating the length of a genetic sequence, typically measured in base pairs (bp)."@en ;
+                   rdfs:label "has sequence length"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSpecies
+:hasSpecies rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :hasTaxonomicRank ;
+            rdfs:comment "A property linking an entity to its species, the basic unit of classification that groups organisms capable of interbreeding."@en ;
+            rdfs:label "has species"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSpeciesEpithet
+:hasSpeciesEpithet rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :hasTaxonomicRank ;
+                   rdfs:comment "A property linking an entity to its species epithet, the second part of a binomial scientific name that identifies the species within a genus."@en ;
+                   rdfs:label "has species epithet"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSporeType
+:hasSporeType rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:comment "A property linking an entity to the specific type of spores produced by a microorganism, such as endospores or exospores."@en ;
+              rdfs:label "has spore type"@en .
+
+
+###  https://purl.dsmz.de/schema/hasStrainNumber
+:hasStrainNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "A property linking an entity to the strain number used in collections or databases, which uniquely identifies the strain."@en ;
+                 rdfs:label "has strain number"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSubspeciesEpithet
+:hasSubspeciesEpithet rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :hasTaxonomicRank ;
+                      rdfs:comment "A property linking an entity to its subspecies epithet, used to identify an additional taxonomic rank below species when subspecies distinctions exist."@en ;
+                      rdfs:label "has subspecies epithet"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSynonym
+:hasSynonym rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :hasName ;
+            rdfs:label "has synonym"@en .
+
+
+###  https://purl.dsmz.de/schema/hasSystematicName
+:hasSystematicName rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :hasName ;
+                   rdfs:label "has systematic name" .
+
+
+###  https://purl.dsmz.de/schema/hasTaxID
+:hasTaxID rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:comment "A property linking an entity to its unique taxonomic identifier (TaxID) used in biological databases to classify organisms."@en ;
+          rdfs:label "has tax ID"@en .
+
+
+###  https://purl.dsmz.de/schema/hasTaxonomicRank
+:hasTaxonomicRank rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:comment "A property linking an entity to its taxonomic rank, which determines its hierarchical position in the biological classification system."@en ;
+                  rdfs:label "has taxonomic rank"@en .
+
+
+###  https://purl.dsmz.de/schema/hasTemperatureRange
+:hasTemperatureRange rdf:type owl:DatatypeProperty ;
+                     rdfs:comment "A property linking an entity to the temperature range in which a microorganism can grow, including minimum, optimum, and maximum values."@en ;
+                     rdfs:label "has temperature range"@en .
+
+
+###  https://purl.dsmz.de/schema/hasTemperatureRangeEnd
+:hasTemperatureRangeEnd rdf:type owl:DatatypeProperty ;
+                        rdfs:comment "A property indicating the maximum temperature at which a microorganism can grow or survive within a specific temperature range."@en ;
+                        rdfs:label "has temperature range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasTemperatureRangeStart
+:hasTemperatureRangeStart rdf:type owl:DatatypeProperty ;
+                          rdfs:comment "A property indicating the minimum temperature at which a microorganism can grow or survive within a specific temperature range."@en ;
+                          rdfs:label "has temperature range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasTestAbility
+:hasTestAbility rdf:type owl:DatatypeProperty ;
+                rdfs:comment "A property indicating the specific ability or characteristic being tested or assessed in a given biological or chemical test."@en ;
+                rdfs:label "has test ability"@en .
+
+
+###  https://purl.dsmz.de/schema/hasTestType
+:hasTestType rdf:type owl:DatatypeProperty ;
+             rdfs:comment "A property linking an entity to the type of test performed, specifying the method or procedure used in the experiment or analysis."@en ;
+             rdfs:label "has test type"@en .
+
+
+###  https://purl.dsmz.de/schema/hasVariant
+:hasVariant rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:comment "A property linking an entity to a specific variant, indicating genetic or phenotypic differences from the typical form of a species or strain."@en ;
+            rdfs:label "has variant"@en .
+
+
+###  https://purl.dsmz.de/schema/hasVolume
+:hasVolume rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:comment "A property linking bibliographic information to the volume of a journal or series in which an article or document is published."@en ;
+           rdfs:label "has volume"@en .
+
+
+###  https://purl.dsmz.de/schema/hasWidth
+:hasWidth rdf:type owl:DatatypeProperty ;
+          rdfs:comment "A property linking an entity to the measured width of a cell or organism, providing important information about its size and morphology."@en ;
+          rdfs:label "has width"@en .
+
+
+###  https://purl.dsmz.de/schema/hasWidthRangeEnd
+:hasWidthRangeEnd rdf:type owl:DatatypeProperty ;
+                  rdfs:comment "A property indicating the maximum width within a specific range for a cell or organism, used to define its size variability."@en ;
+                  rdfs:label "has width range end"@en .
+
+
+###  https://purl.dsmz.de/schema/hasWidthRangeStart
+:hasWidthRangeStart rdf:type owl:DatatypeProperty ;
+                    rdfs:comment "A property indicating the minimum width within a specific range for a cell or organism, used to define its size variability."@en ;
+                    rdfs:label "has width range start"@en .
+
+
+###  https://purl.dsmz.de/schema/hasWidthUnit
+:hasWidthUnit rdf:type owl:DatatypeProperty ;
+              rdfs:comment "A property linking an entity to the unit of measurement used for width, such as micrometers (µm) or millimeters (mm)."@en ;
+              rdfs:label "has width unit"@en .
+
+
+###  https://purl.dsmz.de/schema/isAnimalPathogen
+:isAnimalPathogen rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :isPathogen ;
+                  rdfs:comment "A property indicating whether an organism is a pathogen that specifically causes disease in animals."@en ;
+                  rdfs:label "is animal pathogen"@en .
+
+
+###  https://purl.dsmz.de/schema/isHumanPathogen
+:isHumanPathogen rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :isPathogen ;
+                 rdfs:comment "A property indicating whether an organism is a pathogen that specifically causes disease in humans."@en ;
+                 rdfs:label "is human pathogen"@en .
+
+
+###  https://purl.dsmz.de/schema/isMotile
+:isMotile rdf:type owl:DatatypeProperty ;
+          rdfs:comment "A property indicating whether an organism is capable of movement, typically referring to the presence of structures such as flagella or cilia."@en ;
+          rdfs:label "is motile"@en .
+
+
+###  https://purl.dsmz.de/schema/isPathogen
+:isPathogen rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:comment "A property indicating whether an organism is a pathogen, capable of causing disease in its host."@en ;
+            rdfs:label "is pathogen"@en .
+
+
+###  https://purl.dsmz.de/schema/isPlantPathogen
+:isPlantPathogen rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :isPathogen ;
+                 rdfs:comment "A property indicating whether an organism is a pathogen that specifically causes disease in plants."@en ;
+                 rdfs:label "is plant pathogen"@en .
+
+
+###  https://purl.dsmz.de/schema/isTypeStrain
+:isTypeStrain rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:comment "A property indicating whether an organism is the type strain, which is the strain upon which the description of a species is based."@en ;
+              rdfs:label "is type strain"@en .
+
+
+###  https://purl.dsmz.de/schema/matchesTaxIDLevel
+:matchesTaxIDLevel rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :hasTaxID ;
+                   rdfs:comment "A property indicating the level at which the TaxID matches the classification, such as genus, species, or family."@en ;
+                   rdfs:label "matches tax ID level"@en .
+
+
+###  https://purl.dsmz.de/schema/providedBy
+:providedBy rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:comment "A property indicating the source or entity that provided the organism, sample, or data, often used to reference contributors or institutions."@en ;
+            rdfs:label "provided by"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://purl.dsmz.de/schema/Activator
+:Activator rdf:type owl:Class ;
+           rdfs:subClassOf :Effector ;
+           owl:disjointWith :Inhibitor ;
+           rdfs:comment "An effector molecule that increases the activity of an enzyme or protein, often by stabilizing its active form or enhancing its affinity for a substrate."@en ;
+           rdfs:label "Activator"@en .
+
+
+###  https://purl.dsmz.de/schema/Alcohol
+:Alcohol rdf:type owl:Class ;
+         rdfs:subClassOf :OrganicCompound ;
+         owl:disjointWith :Aldehyde ;
+         rdfs:comment "An organic compound in which a hydroxyl group (-OH) is bound to a carbon atom. Alcohols are used in a wide range of industrial and pharmaceutical applications, with ethanol (C₂H₅OH) being one of the most well-known types due to its role in beverages and as a solvent."@en ;
+         rdfs:label "Alcohol"@en .
+
+
+###  https://purl.dsmz.de/schema/Aldehyde
+:Aldehyde rdf:type owl:Class ;
+          rdfs:subClassOf :OrganicCompound ;
+          rdfs:comment "An organic compound containing a carbonyl group (C=O) bonded to at least one hydrogen atom. Aldehydes are key intermediates in organic reactions and are used in the synthesis of various chemicals, including fragrances and preservatives. Formaldehyde (CH₂O) is a common example."@en ;
+          rdfs:label "Aldehyde"@en .
+
+
+###  https://purl.dsmz.de/schema/AminoAcidMetabolism
+:AminoAcidMetabolism rdf:type owl:Class ;
+                     rdfs:subClassOf :MetabolicPathway ;
+                     rdfs:comment "A metabolic pathway that involves the synthesis and breakdown of amino acids, which are essential for protein production and various cellular functions."@en ;
+                     rdfs:label "Amino Acid Metabolism"@en .
+
+
+###  https://purl.dsmz.de/schema/AnaerobicBacteria
+:AnaerobicBacteria rdf:type owl:Class ;
+                   rdfs:subClassOf :OrganismGroup ;
+                   rdfs:comment "Bacteria that grow in environments devoid of oxygen. These organisms often thrive in habitats such as soil, sediments, and the human gut."@en ;
+                   rdfs:label "Anaerobic Bacteria"@en .
+
+
+###  https://purl.dsmz.de/schema/AnatomicStructure
+:AnatomicStructure rdf:type owl:Class ;
+                   rdfs:label "Anatomic Structure"@en .
+
+
+###  https://purl.dsmz.de/schema/AnimalPathogenicity
+:AnimalPathogenicity rdf:type owl:Class ;
+                     rdfs:subClassOf :Pathogenicity ;
+                     rdfs:comment "The capacity of an organism to cause disease in animals, including livestock, wildlife, and pets."@en ;
+                     rdfs:label "Animal Pathogenicity"@en .
+
+
+###  https://purl.dsmz.de/schema/AnorganicCompound
+:AnorganicCompound rdf:type owl:Class ;
+                   rdfs:subClassOf :ChemicalCompound ;
+                   owl:disjointWith :OrganicCompound ;
+                   rdfs:comment "Refers to compounds that do not contain carbon-hydrogen bonds, typically derived from minerals or non-living matter. Inorganic compounds play vital roles in various chemical reactions and industrial processes"@en ;
+                   rdfs:label "Anorganic Compound"@en .
+
+
+###  https://purl.dsmz.de/schema/AnorganicMolecule
+:AnorganicMolecule rdf:type owl:Class ;
+                   rdfs:subClassOf :AnorganicCompound ;
+                   rdfs:comment "A molecule that lacks carbon-hydrogen bonds, typically composed of non-metallic and metallic elements. Examples include water (H₂O), carbon dioxide (CO₂), and sulfuric acid (H₂SO₄)."@en ;
+                   rdfs:label "Anorganic Molecule"@en .
+
+
+###  https://purl.dsmz.de/schema/Archaea
+:Archaea rdf:type owl:Class ;
+         rdfs:subClassOf :Prokaryotes ;
+         rdfs:comment "A domain of prokaryotic microorganisms that are distinct from bacteria. Archaea often thrive in extreme environments, such as hot springs and salt lakes, and have unique biochemical pathways."@en ;
+         rdfs:label "Archaea"@en .
+
+
+###  https://purl.dsmz.de/schema/BRENDALigand-ID
+:BRENDALigand-ID rdf:type owl:Class ;
+                 rdfs:subClassOf :CompoundIdentifier ;
+                 rdfs:comment "An identifier used in the BRENDA enzyme database to refer to specific ligands or compounds that interact with enzymes."@en .
+
+
+###  https://purl.dsmz.de/schema/Bacteria
+:Bacteria rdf:type owl:Class ;
+          rdfs:subClassOf :Prokaryotes ;
+          rdfs:comment "Single-celled prokaryotes that are found in virtually every environment on Earth. Bacteria can be both beneficial (e.g., in digestion and fermentation) and pathogenic, playing essential roles in ecological processes and biotechnology."@en ;
+          rdfs:label "Bacteria"@en .
+
+
+###  https://purl.dsmz.de/schema/BioCycCompound-ID
+:BioCycCompound-ID rdf:type owl:Class ;
+                   rdfs:subClassOf :CompoundIdentifier ;
+                   rdfs:comment "An identifier used in the BioCyc database to represent specific chemical compounds."@en .
+
+
+###  https://purl.dsmz.de/schema/BiochemicalPathway
+:BiochemicalPathway rdf:type owl:Class ;
+                    rdfs:subClassOf :Process ;
+                    rdfs:comment "A series of interconnected biochemical reactions that occur within a cell or organism to carry out essential functions such as metabolism, signal transduction, or energy production."@en ;
+                    rdfs:label "Biochemical Pathway"@en .
+
+
+###  https://purl.dsmz.de/schema/BiochemicalReaction
+:BiochemicalReaction rdf:type owl:Class ;
+                     rdfs:subClassOf :Process ;
+                     rdfs:comment "A chemical reaction that occurs within living organisms, often catalyzed by enzymes, and is essential for metabolism, growth, and cellular function."@en ;
+                     rdfs:label "Biochemical Reaction"@en .
+
+
+###  https://purl.dsmz.de/schema/BiologicalMaterial
+:BiologicalMaterial rdf:type owl:Class ;
+                    rdfs:label "Biological Material"@en .
+
+
+###  https://purl.dsmz.de/schema/BiologicalRole
+:BiologicalRole rdf:type owl:Class ;
+                rdfs:subClassOf :ConceptualEntity ;
+                rdfs:comment "Describes the functional role that a substance or organism plays in a biological context, such as its part in metabolism, growth, or interaction with other entities."@en ;
+                rdfs:label "Biological Role"@en .
+
+
+###  https://purl.dsmz.de/schema/Blood
+:Blood rdf:type owl:Class ;
+       rdfs:subClassOf :BodyFluid ;
+       rdfs:label "Blood"@en .
+
+
+###  https://purl.dsmz.de/schema/BodyFluid
+:BodyFluid rdf:type owl:Class ;
+           rdfs:subClassOf :AnatomicStructure ;
+           rdfs:label "Body Fluid"@en .
+
+
+###  https://purl.dsmz.de/schema/CASRegistryNumber
+:CASRegistryNumber rdf:type owl:Class ;
+                   rdfs:subClassOf :CompoundIdentifier ;
+                   rdfs:comment "A unique numerical identifier assigned by the Chemical Abstracts Service (CAS) to every chemical substance described in the open scientific literature."@en ;
+                   rdfs:label "CASRegistry Number"@en .
+
+
+###  https://purl.dsmz.de/schema/CarbohydratePathway
+:CarbohydratePathway rdf:type owl:Class ;
+                     rdfs:subClassOf :MetabolicPathway ;
+                     rdfs:comment "A metabolic pathway responsible for the breakdown and synthesis of carbohydrates, including sugars, which are key sources of energy for living organisms."@en ;
+                     rdfs:label "Carbohydrate Pathway"@en .
+
+
+###  https://purl.dsmz.de/schema/CarbonSource
+:CarbonSource rdf:type owl:Class ;
+              rdfs:subClassOf :BiologicalRole ;
+              rdfs:comment "A biological role in which a substance provides carbon atoms, typically serving as the backbone for organic molecules during metabolism. Examples include glucose and other sugars used by organisms for energy."@en ;
+              rdfs:label "Carbon Source"@en .
+
+
+###  https://purl.dsmz.de/schema/CellArrangement
+:CellArrangement rdf:type owl:Class ;
+                 rdfs:subClassOf :CellMorphology ;
+                 rdfs:comment "The pattern in which cells are organized or grouped, such as chains (strepto-), clusters (staphylo-), or pairs (diplo-). This is a distinguishing feature for many types of microorganisms."@en ;
+                 rdfs:label "Cell Arrangement"@en .
+
+
+###  https://purl.dsmz.de/schema/CellDensity
+:CellDensity rdf:type owl:Class ;
+             rdfs:subClassOf :Density ;
+             rdfs:comment "The number of cells within a given volume or area, typically used to measure the growth or concentration of cells in culture or environmental samples."@en ;
+             rdfs:label "Cell Density"@en .
+
+
+###  https://purl.dsmz.de/schema/CellLine
+:CellLine rdf:type owl:Class ;
+          rdfs:subClassOf :BiologicalMaterial ;
+          rdfs:label "Cell Line"@en .
+
+
+###  https://purl.dsmz.de/schema/CellMorphology
+:CellMorphology rdf:type owl:Class ;
+                rdfs:subClassOf :MicrobialPhenotype ;
+                rdfs:comment "The study of the structure and form of cells, including features such as shape, size, pigmentation, and arrangement. Cell morphology is a key aspect of microbial identification and classification."@en ;
+                rdfs:label "Cell Morphology"@en .
+
+
+###  https://purl.dsmz.de/schema/CellMotility
+:CellMotility rdf:type owl:Class ;
+              rdfs:subClassOf :MicrobialPhenotype ;
+              rdfs:comment "The ability of cells to move by themselves using mechanisms such as flagella, cilia, or pseudopodia. Motility is an important characteristic for distinguishing microorganisms and understanding their behavior."@en ;
+              rdfs:label "Cell Motility"@en .
+
+
+###  https://purl.dsmz.de/schema/CellPigmentation
+:CellPigmentation rdf:type owl:Class ;
+                  rdfs:subClassOf :CellMorphology ;
+                  rdfs:comment "The coloration of cells, which can be due to pigments produced by the organism. Cell pigmentation is often used in microbial classification and may indicate specific metabolic processes."@en ;
+                  rdfs:label "Cell Pigmentation"@en .
+
+
+###  https://purl.dsmz.de/schema/CellShape
+:CellShape rdf:type owl:Class ;
+           rdfs:subClassOf :CellMorphology ;
+           rdfs:comment "The physical shape of a microorganism's cell, such as rod-shaped (bacillus), spherical (coccus), or spiral-shaped (spirillum). Cell shape is an important taxonomic characteristic."@en ;
+           rdfs:label "Cell Shape"@en .
+
+
+###  https://purl.dsmz.de/schema/CellSize
+:CellSize rdf:type owl:Class ;
+          rdfs:subClassOf :CellMorphology ;
+          rdfs:comment "The dimensions or volume of a microorganism's cell, which can vary widely among species and is used in the identification and classification of microorganisms."@en ;
+          rdfs:label "Cell Size"@en .
+
+
+###  https://purl.dsmz.de/schema/ChEBI-ID
+:ChEBI-ID rdf:type owl:Class ;
+          rdfs:subClassOf :CompoundIdentifier ;
+          rdfs:comment "An identifier used by the Chemical Entities of Biological Interest (ChEBI) database to represent biologically relevant molecules."@en .
+
+
+###  https://purl.dsmz.de/schema/ChEMBL-ID
+:ChEMBL-ID rdf:type owl:Class ;
+           rdfs:subClassOf :CompoundIdentifier ;
+           rdfs:comment "An identifier used in the ChEMBL database to track bioactive drug-like compounds."@en .
+
+
+###  https://purl.dsmz.de/schema/Chaperone
+:Chaperone rdf:type owl:Class ;
+           rdfs:subClassOf :Protein ;
+           rdfs:comment "A type of protein that assists other proteins in folding into their proper three-dimensional structures. Chaperones play a crucial role in ensuring proteins reach their functional forms and preventing misfolding and aggregation."@en ;
+           rdfs:label "Chaperone"@en .
+
+
+###  https://purl.dsmz.de/schema/ChemSpider-ID
+:ChemSpider-ID rdf:type owl:Class ;
+               rdfs:subClassOf :CompoundIdentifier ;
+               rdfs:comment "An identifier used by ChemSpider to represent chemical structures and associated data."@en .
+
+
+###  https://purl.dsmz.de/schema/ChemicalCompound
+:ChemicalCompound rdf:type owl:Class ;
+                  rdfs:subClassOf :ChemicalMaterial ;
+                  rdfs:comment "A substance composed of two or more different elements chemically bonded together in a fixed ratio. Compounds can be broken down into simpler substances through chemical reactions and are classified based on their chemical structure and properties."@en ;
+                  rdfs:label "Chemical Compound"@en .
+
+
+###  https://purl.dsmz.de/schema/ChemicalMaterial
+:ChemicalMaterial rdf:type owl:Class ;
+                  rdfs:comment "Represents any substance with a defined chemical composition, including elements, molecules, and mixtures. Chemical materials are fundamental to processes in biology, chemistry, and physics, and include both organic and inorganic compounds."@en ;
+                  rdfs:label "Chemical Material"@en .
+
+
+###  https://purl.dsmz.de/schema/ChemicalRole
+:ChemicalRole rdf:type owl:Class ;
+              rdfs:subClassOf :ConceptualEntity ;
+              rdfs:comment "Describes the functional role a chemical substance plays in a reaction, pathway, or process, such as a catalyst, substrate, or product."@en ;
+              rdfs:label "Chemical Role"@en .
+
+
+###  https://purl.dsmz.de/schema/Class
+:Class rdf:type owl:Class ;
+       rdfs:subClassOf :TaxonomicRank ;
+       rdfs:comment "A rank used in the biological classification that groups organisms sharing common traits, placed below the phylum and above the order."@en ;
+       rdfs:label "Class"@en .
+
+
+###  https://purl.dsmz.de/schema/Cofactor
+:Cofactor rdf:type owl:Class ;
+          rdfs:subClassOf :ChemicalRole ;
+          rdfs:comment "A non-protein chemical compound or metallic ion required by an enzyme to carry out its biological function. Cofactors are often involved in electron transfer, stabilization of intermediates, or catalysis."@en ;
+          rdfs:label "Cofactor"@en .
+
+
+###  https://purl.dsmz.de/schema/CofactorsAndVitaminsMetabolism
+:CofactorsAndVitaminsMetabolism rdf:type owl:Class ;
+                                rdfs:subClassOf :MetabolicPathway ;
+                                rdfs:comment "A metabolic pathway involved in the biosynthesis and utilization of cofactors and vitamins, which are essential molecules for enzyme function and other biochemical processes."@en ;
+                                rdfs:label "Cofactors and Vitamins Metabolism"@en .
+
+
+###  https://purl.dsmz.de/schema/ColonyColor
+:ColonyColor rdf:type owl:Class ;
+             rdfs:subClassOf :ColonyMorphology ;
+             rdfs:comment "The color or pigmentation of a microbial colony, which can provide insights into the organism's metabolism or the presence of specific pigments."@en ;
+             rdfs:label "Colony Color"@en .
+
+
+###  https://purl.dsmz.de/schema/ColonyMorphology
+:ColonyMorphology rdf:type owl:Class ;
+                  rdfs:subClassOf :MicrobialPhenotype ;
+                  rdfs:comment "The visible characteristics of microbial colonies grown on solid media, including aspects such as color, shape, and size. Colony morphology is used in microbial identification."@en ;
+                  rdfs:label "Colony Morphology"@en .
+
+
+###  https://purl.dsmz.de/schema/ColonyShape
+:ColonyShape rdf:type owl:Class ;
+             rdfs:subClassOf :ColonyMorphology ;
+             rdfs:comment "The overall shape of a microbial colony when grown on solid media, which can vary from round, irregular, filamentous, or others, depending on the species."@en ;
+             rdfs:label "Colony Shape"@en .
+
+
+###  https://purl.dsmz.de/schema/ColonySize
+:ColonySize rdf:type owl:Class ;
+            rdfs:subClassOf :ColonyMorphology ;
+            rdfs:comment "The diameter or size of a microbial colony on solid media, which can be an important distinguishing feature among species."@en ;
+            rdfs:label "Colony Size"@en .
+
+
+###  https://purl.dsmz.de/schema/Color
+:Color rdf:type owl:Class ;
+       rdfs:subClassOf :PropertyOrAttribute ;
+       rdfs:comment "A visual property or attribute of an object or substance based on the wavelengths of light it reflects or emits, perceived by human vision as hues such as red, blue, or green."@en ;
+       rdfs:label "Color"@en .
+
+
+###  https://purl.dsmz.de/schema/CompoundIdentifier
+:CompoundIdentifier rdf:type owl:Class ;
+                    rdfs:subClassOf :MoleculeIdentifier ;
+                    rdfs:comment "An identifier used to track chemical compounds across various scientific and chemical databases."@en ;
+                    rdfs:label "Compound Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/CompoundName
+:CompoundName rdf:type owl:Class ;
+              rdfs:subClassOf :MoleculeIdentifier ;
+              rdfs:comment "The standard or systematic name assigned to a chemical compound."@en ;
+              rdfs:label "Compound Name"@en .
+
+
+###  https://purl.dsmz.de/schema/Concentration
+:Concentration rdf:type owl:Class ;
+               rdfs:subClassOf :PropertyOrAttribute ;
+               rdfs:comment "The amount of a substance within a specific volume or solution, typically expressed in units such as moles per liter (M) or mass per volume. Concentration is a key property in chemical and biological experiments."@en ;
+               rdfs:label "Concentration"@en .
+
+
+###  https://purl.dsmz.de/schema/ConceptualEntity
+:ConceptualEntity rdf:type owl:Class ;
+                  rdfs:comment "An abstract class representing non-physical entities, concepts, or roles that play a part in biological, chemical, or environmental processes. Conceptual entities are used to describe functional roles, classifications, and conditions within scientific frameworks."@en ;
+                  rdfs:label "Conceptual Entity"@en .
+
+
+###  https://purl.dsmz.de/schema/Contamination
+:Contamination rdf:type owl:Class ;
+               rdfs:subClassOf :PropertyOrAttribute ;
+               rdfs:comment "The presence of an unwanted substance, organism, or impurity within a sample, which can affect its purity, quality, or accuracy in experimental procedures."@en ;
+               rdfs:label "Contamination"@en .
+
+
+###  https://purl.dsmz.de/schema/Coordinate
+:Coordinate rdf:type owl:Class ;
+            rdfs:subClassOf :GeographicArea ;
+            rdfs:comment "A set of values that represent the exact position of a point on the Earth’s surface, typically given in latitude and longitude."@en ;
+            rdfs:label "Coordinate"@en .
+
+
+###  https://purl.dsmz.de/schema/CultivationCondition
+:CultivationCondition rdf:type owl:Class ;
+                      rdfs:subClassOf :BiologicalRole ;
+                      rdfs:comment "A biological role that encompasses the specific environmental or nutritional conditions required for growing microorganisms or cells. These conditions can vary based on temperature, pH, and available nutrients."@en ;
+                      rdfs:label "Cultivation Condition"@en .
+
+
+###  https://purl.dsmz.de/schema/CultivationMedium
+:CultivationMedium rdf:type owl:Class ;
+                   rdfs:subClassOf :ChemicalMaterial ;
+                   rdfs:comment "A substance or mixture of substances that supports the growth, reproduction, and maintenance of microorganisms or cells. Cultivation media are used in microbiology, biotechnology, and cell biology to provide nutrients, moisture, and the appropriate environment for biological entities."@en ;
+                   rdfs:label "Cultivation Medium"@en .
+
+
+###  https://purl.dsmz.de/schema/CultivationTime
+:CultivationTime rdf:type owl:Class ;
+                 rdfs:subClassOf :Time ;
+                 owl:disjointWith :DoublingTime ;
+                 rdfs:comment "The amount of time an organism, such as bacteria or cells, is allowed to grow in culture under controlled conditions."@en ;
+                 rdfs:label "Cultivation Time"@en .
+
+
+###  https://purl.dsmz.de/schema/CultureCollection
+:CultureCollection rdf:type owl:Class ;
+                   rdfs:comment "A curated repository of biological specimens, typically microorganisms such as bacteria, fungi, viruses, or cell lines, that are preserved for research, industrial, and medical purposes. Culture collections ensure the long-term preservation of biological diversity and provide standardized, authenticated strains for scientific study and biotechnological applications. They often serve as reference centers for strain identification, characterization, and distribution. Examples include well-known collections like ATCC (American Type Culture Collection) and DSMZ (German Collection of Microorganisms and Cell Cultures)."@en ;
+                   rdfs:label "Culture Collection"@en .
+
+
+###  https://purl.dsmz.de/schema/CultureCollectionNumber
+:CultureCollectionNumber rdf:type owl:Class ;
+                         rdfs:subClassOf :StrainNumber ;
+                         rdfs:comment "A unique identifier assigned to a strain stored in a culture collection, often used for accessing strain data and ordering."@en ;
+                         rdfs:label "Culture Collection Number"@en .
+
+
+###  https://purl.dsmz.de/schema/CultureCondition
+:CultureCondition rdf:type owl:Class ;
+                  rdfs:subClassOf :ConceptualEntity ;
+                  rdfs:comment "Describes specific environmental conditions required for growing organisms in a controlled environment, such as the type of medium, pH, and temperature."@en ;
+                  rdfs:label "Culture Condition"@en .
+
+
+###  https://purl.dsmz.de/schema/CultureMedium
+:CultureMedium rdf:type owl:Class ;
+               rdfs:subClassOf :CultureCondition ;
+               rdfs:comment "A substance or mixture that provides the nutrients necessary for microorganisms or cells to grow in laboratory conditions. Culture media can be defined or complex, depending on their composition."@en ;
+               rdfs:label "Culture Medium"@en .
+
+
+###  https://purl.dsmz.de/schema/CulturePH
+:CulturePH rdf:type owl:Class ;
+           rdfs:subClassOf :CultureCondition ;
+           rdfs:comment "The measure of acidity or alkalinity in a culture environment. The pH of the medium influences the growth and metabolic activity of organisms."@en ;
+           rdfs:label "Culture pH"@en .
+
+
+###  https://purl.dsmz.de/schema/CultureTemperature
+:CultureTemperature rdf:type owl:Class ;
+                    rdfs:subClassOf :CultureCondition ;
+                    rdfs:comment "The temperature at which a culture is maintained to optimize the growth of the organism. Different organisms require specific temperature ranges for ideal growth conditions."@en ;
+                    rdfs:label "Culture Temperature"@en .
+
+
+###  https://purl.dsmz.de/schema/Cytokine
+:Cytokine rdf:type owl:Class ;
+          rdfs:subClassOf :Protein ;
+          rdfs:comment "A category of signaling proteins involved in cell communication, particularly in immune responses. Cytokines regulate the behavior of immune cells and can stimulate or inhibit various functions such as inflammation, cell growth, and apoptosis."@en ;
+          rdfs:label "Cytokine"@en .
+
+
+###  https://purl.dsmz.de/schema/DISCONTINUED
+:DISCONTINUED rdf:type owl:Class .
+
+
+###  https://purl.dsmz.de/schema/DNASequence
+:DNASequence rdf:type owl:Class ;
+             rdfs:subClassOf :NucleotideSequence ;
+             rdfs:comment "A sequence of nucleotides within DNA that encodes genetic information. DNA sequences are responsible for heredity and govern cellular functions through gene expression."@en ;
+             rdfs:label "DNASequence"@en .
+
+
+###  https://purl.dsmz.de/schema/DOI
+:DOI rdf:type owl:Class ;
+     rdfs:subClassOf :LiteratureIdentifier ;
+     rdfs:comment "A Digital Object Identifier (DOI) is a persistent identifier or handle used to uniquely identify objects, such as electronic documents."@en ;
+     rdfs:label "DOI"@en .
+
+
+###  https://purl.dsmz.de/schema/Dataset
+:Dataset rdf:type owl:Class ;
+         rdfs:subClassOf :Record ;
+         owl:disjointWith :Literature ;
+         rdfs:comment "A structured collection of data, often presented in tabular or other formats, that is used for analysis, research, or reference purposes. Datasets can consist of numerical, textual, or categorical information."@en ;
+         rdfs:label "Dataset"@en .
+
+
+###  https://purl.dsmz.de/schema/DegradationPathway
+:DegradationPathway rdf:type owl:Class ;
+                    rdfs:subClassOf :MetabolicPathway ;
+                    rdfs:comment "A metabolic pathway that involves the breakdown of complex molecules into simpler ones, often for the purpose of recycling or energy production."@en ;
+                    rdfs:label "Degradation Pathway"@en .
+
+
+###  https://purl.dsmz.de/schema/Density
+:Density rdf:type owl:Class ;
+         rdfs:subClassOf :PropertyOrAttribute ;
+         rdfs:comment "The mass of a substance per unit volume, often expressed as grams per cubic centimeter (g/cm³) or kilograms per liter (kg/L). Density is an important physical property for characterizing substances."@en ;
+         rdfs:label "Density"@en .
+
+
+###  https://purl.dsmz.de/schema/Diversity
+:Diversity rdf:type owl:Class ;
+           rdfs:subClassOf :PropertyOrAttribute ;
+           rdfs:comment "A measure of the variety or heterogeneity within a sample, population, or ecosystem, often used in ecological, biological, or genetic studies to describe variation among species or genetic traits."@en ;
+           rdfs:label "Diversity"@en .
+
+
+###  https://purl.dsmz.de/schema/Domain
+:Domain rdf:type owl:Class ;
+        rdfs:subClassOf :TaxonomicRank ;
+        rdfs:comment "The highest taxonomic rank in biological classification, dividing life into three domains: Archaea, Bacteria, and Eukarya."@en ;
+        rdfs:label "Domain"@en .
+
+
+###  https://purl.dsmz.de/schema/DoublingTime
+:DoublingTime rdf:type owl:Class ;
+              rdfs:subClassOf :Time ;
+              rdfs:comment "The period required for a population of cells or organisms to double in size, often used in microbiology and cell biology to assess growth rates."@en ;
+              rdfs:label "Doubling Time"@en .
+
+
+###  https://purl.dsmz.de/schema/Drug
+:Drug rdf:type owl:Class ;
+      rdfs:subClassOf :ChemicalMaterial ;
+      rdfs:comment "A chemical substance used in the treatment, diagnosis, prevention, or mitigation of diseases or medical conditions. Drugs can have therapeutic or toxic effects and are often rigorously tested and regulated before use in medicine."@en ;
+      rdfs:label "Drug"@en .
+
+
+###  https://purl.dsmz.de/schema/DrugOrDisease-associatedPathway
+:DrugOrDisease-associatedPathway rdf:type owl:Class ;
+                                 rdfs:subClassOf :BiochemicalPathway ;
+                                 rdfs:comment "A biochemical pathway that is directly related to the metabolism or mechanism of action of drugs or is associated with a specific disease, often targeted for therapeutic interventions."@en .
+
+
+###  https://purl.dsmz.de/schema/ECNumber
+:ECNumber rdf:type owl:Class ;
+          rdfs:subClassOf :EnzymeIdentifier ;
+          owl:disjointWith :EnzymeName ;
+          rdfs:comment "A numerical classification scheme for enzymes based on the chemical reactions they catalyze, as defined by the Enzyme Commission (EC)."@en ;
+          rdfs:label "EC Number"@en .
+
+
+###  https://purl.dsmz.de/schema/Effector
+:Effector rdf:type owl:Class ;
+          rdfs:subClassOf :ChemicalRole ;
+          rdfs:comment "A molecule that modulates the activity of a protein, typically an enzyme or receptor. Effectors can either enhance or inhibit the activity of their target molecule."@en ;
+          rdfs:label "Effector"@en .
+
+
+###  https://purl.dsmz.de/schema/ElectronAcceptor
+:ElectronAcceptor rdf:type owl:Class ;
+                  rdfs:subClassOf :ChemicalRole ;
+                  rdfs:comment "A chemical role where a molecule receives electrons during a redox (reduction-oxidation) reaction. Electron acceptors play a crucial role in processes such as respiration and photosynthesis."@en ;
+                  rdfs:label "Electron Acceptor"@en .
+
+
+###  https://purl.dsmz.de/schema/EnergyMetabolism
+:EnergyMetabolism rdf:type owl:Class ;
+                  rdfs:subClassOf :MetabolicPathway ;
+                  rdfs:comment "A set of metabolic pathways that are involved in the generation and use of energy within an organism, typically through processes like cellular respiration and photosynthesis."@en ;
+                  rdfs:label "Energy Metabolism"@en .
+
+
+###  https://purl.dsmz.de/schema/EnergySource
+:EnergySource rdf:type owl:Class ;
+              rdfs:subClassOf :BiologicalRole ,
+                              :MetabolicPhenotype ;
+              rdfs:comment "Describes a role in which a substance provides energy to an organism, often through metabolic processes like glycolysis or oxidative phosphorylation. Common energy sources include sugars, fats, and light (for photosynthetic organisms)."@en ,
+                           "The type of substance or process that an organism uses to obtain energy, such as light (photosynthesis), organic compounds, or inorganic compounds. The energy source plays a crucial role in an organism's metabolic phenotype."@en ;
+              rdfs:label "Energy Source"@en .
+
+
+###  https://purl.dsmz.de/schema/EnrichmentProcedure
+:EnrichmentProcedure rdf:type owl:Class ;
+                     rdfs:subClassOf :IsolationProcedure ;
+                     rdfs:comment "A type of isolation procedure where specific conditions are used to enhance the growth of a particular organism or group of organisms, making it easier to isolate them from a mixed community."@en ;
+                     rdfs:label "Enrichment Procedure"@en .
+
+
+###  https://purl.dsmz.de/schema/EnsemblGeneID
+:EnsemblGeneID rdf:type owl:Class ;
+               rdfs:subClassOf :GeneIdentifier ;
+               rdfs:comment "A unique identifier used in the Ensembl database to refer to a specific gene."@en ;
+               rdfs:label "Ensembl GeneID"@en .
+
+
+###  https://purl.dsmz.de/schema/EnsemblProteinID
+:EnsemblProteinID rdf:type owl:Class ;
+                  rdfs:subClassOf :ProteinIdentifier ;
+                  rdfs:comment "An identifier used in the Ensembl database to refer to a specific protein sequence encoded by a gene."@en ;
+                  rdfs:label "Ensembl ProteinID"@en .
+
+
+###  https://purl.dsmz.de/schema/Environment
+:Environment rdf:type owl:Class ;
+             rdfs:subClassOf :ConceptualEntity ;
+             rdfs:comment "A conceptual entity describing the physical surroundings or conditions in which an organism lives or a process occurs. Environments can be natural or artificial."@en ;
+             rdfs:label "Environment"@en .
+
+
+###  https://purl.dsmz.de/schema/EnvironmentalCondition
+:EnvironmentalCondition rdf:type owl:Class ;
+                        rdfs:comment "Describes any external factor or set of factors in the surrounding environment that can influence the growth, behavior, or survival of an organism. Environmental conditions play a crucial role in determining how organisms interact with their habitat and can include factors like temperature, pH, humidity, and light."@en ;
+                        rdfs:label "Environmental Condition"@en .
+
+
+###  https://purl.dsmz.de/schema/Enzyme
+:Enzyme rdf:type owl:Class ;
+        rdfs:subClassOf :Protein ;
+        rdfs:comment "A biological catalyst that accelerates chemical reactions in the body. Enzymes are essential for nearly all metabolic processes and are highly specific for their substrates."@en ;
+        rdfs:label "Enzyme"@en .
+
+
+###  https://purl.dsmz.de/schema/EnzymeActivityAlteration
+:EnzymeActivityAlteration rdf:type owl:Class ;
+                          rdfs:subClassOf :Process ;
+                          rdfs:comment "A process in which the activity of an enzyme is either increased or decreased due to factors such as the presence of inhibitors, activators, or post-translational modifications."@en ;
+                          rdfs:label "Enzyme Activity Alteration"@en .
+
+
+###  https://purl.dsmz.de/schema/EnzymeIdentifier
+:EnzymeIdentifier rdf:type owl:Class ;
+                  rdfs:subClassOf :MoleculeIdentifier ;
+                  rdfs:comment "A general identifier used to refer to specific enzymes, often based on a classification system like the EC number."@en ;
+                  rdfs:label "Enzyme Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/EnzymeName
+:EnzymeName rdf:type owl:Class ;
+            rdfs:subClassOf :EnzymeIdentifier ;
+            rdfs:comment "The common or systematic name of an enzyme, often used to describe its function or substrate specificity."@en ;
+            rdfs:label "Enzyme Name"@en .
+
+
+###  https://purl.dsmz.de/schema/Eukaryotes
+:Eukaryotes rdf:type owl:Class ;
+            rdfs:subClassOf :Organism ;
+            rdfs:comment "Organisms whose cells contain a nucleus and other organelles enclosed within membranes. This group includes animals, plants, fungi, and protists."@en ;
+            rdfs:label "Eukaryote"@en .
+
+
+###  https://purl.dsmz.de/schema/EuropePMCID
+:EuropePMCID rdf:type owl:Class ;
+             rdfs:subClassOf :LiteratureIdentifier ;
+             rdfs:label "EuropePMC-ID"@en .
+
+
+###  https://purl.dsmz.de/schema/ExpressionFeature
+:ExpressionFeature rdf:type owl:Class ;
+                   rdfs:subClassOf :Feature ;
+                   owl:disjointWith :SequenceFeature ;
+                   rdfs:comment "A specific aspect or characteristic of gene or protein expression, such as the presence of regulatory elements, response to stimuli, or expression level patterns across tissues or conditions."@en ;
+                   rdfs:label "Expression Feature"@en .
+
+
+###  https://purl.dsmz.de/schema/ExpressionLevel
+:ExpressionLevel rdf:type owl:Class ;
+                 rdfs:subClassOf :PropertyOrAttribute ;
+                 rdfs:comment "The quantity of a gene product, such as mRNA or protein, that is produced in a cell or tissue under specific conditions. Expression level is a key attribute in gene expression studies and functional genomics."@en ;
+                 rdfs:label "Expression Level"@en .
+
+
+###  https://purl.dsmz.de/schema/FASTA
+:FASTA rdf:type owl:Class ;
+       rdfs:subClassOf :FileFormat ;
+       rdfs:comment "A text-based file format commonly used for storing nucleotide or peptide sequences, with each sequence identified by a header line starting with a “>” symbol."@en ;
+       rdfs:label "FASTA"@en .
+
+
+###  https://purl.dsmz.de/schema/FASTQ
+:FASTQ rdf:type owl:Class ;
+       rdfs:subClassOf :FileFormat ;
+       rdfs:comment "A file format used for storing nucleotide sequences along with their corresponding quality scores, commonly used in high-throughput sequencing technologies."@en ;
+       rdfs:label "FASTQ"@en .
+
+
+###  https://purl.dsmz.de/schema/Family
+:Family rdf:type owl:Class ;
+        rdfs:subClassOf :TaxonomicRank ;
+        rdfs:comment "A rank in biological classification that groups together genera with common characteristics, placed below order and above genus."@en ;
+        rdfs:label "Family"@en .
+
+
+###  https://purl.dsmz.de/schema/Feature
+:Feature rdf:type owl:Class ;
+         rdfs:subClassOf :PropertyOrAttribute ;
+         rdfs:comment "A characteristic or measurable aspect of an entity, often used to describe specific elements or attributes in biological sequences, structures, or functions."@en ;
+         rdfs:label "Feature"@en .
+
+
+###  https://purl.dsmz.de/schema/FileFormat
+:FileFormat rdf:type owl:Class ;
+            rdfs:subClassOf :ConceptualEntity ;
+            rdfs:comment "A conceptual entity representing the structure and encoding of files used in biological, chemical, or other scientific contexts."@en ;
+            rdfs:label "File Format"@en .
+
+
+###  https://purl.dsmz.de/schema/FlowRate
+:FlowRate rdf:type owl:Class ;
+          rdfs:subClassOf :Rate ;
+          rdfs:comment "The volume of fluid or gas passing through a point or conduit over a specific period, often measured in liters per second (L/s) or cubic meters per hour (m³/h)."@en ;
+          rdfs:label "Flow Rate"@en .
+
+
+###  https://purl.dsmz.de/schema/FoodOrFoodProduct
+:FoodOrFoodProduct rdf:type owl:Class ;
+                   rdfs:subClassOf :ChemicalMaterial ;
+                   rdfs:comment "Any substance consumed for nutritional support, energy, or enjoyment. Food products can be processed or unprocessed and typically consist of proteins, fats, carbohydrates, vitamins, and minerals essential for an organism’s health and growth. Examples include fruits, vegetables, meats, and processed foods."@en ;
+                   rdfs:label "Food or Food Product"@en .
+
+
+###  https://purl.dsmz.de/schema/FunctionalAnnotation
+:FunctionalAnnotation rdf:type owl:Class ;
+                      rdfs:subClassOf :ConceptualEntity ;
+                      rdfs:comment "Describes the assignment of functional roles to genes, proteins, or other biological entities based on experimental or computational analysis."@en ;
+                      rdfs:label "Functional Annotation"@en .
+
+
+###  https://purl.dsmz.de/schema/GCContent
+:GCContent rdf:type owl:Class ;
+           rdfs:subClassOf :MolecularProperty ;
+           rdfs:comment "The percentage of guanine (G) and cytosine (C) bases in a DNA or RNA molecule, often used as an indicator of stability and gene expression potential in a sequence."@en ;
+           rdfs:label "GCContent"@en .
+
+
+###  https://purl.dsmz.de/schema/GMO
+:GMO rdf:type owl:Class ;
+     rdfs:subClassOf :OrganismGroup ;
+     rdfs:comment "Genetically Modified Organisms (GMOs) have had their genomes altered through genetic engineering, often to enhance traits such as resistance to pests or herbicides."@en ;
+     rdfs:label "GMO"@en .
+
+
+###  https://purl.dsmz.de/schema/Gas
+:Gas rdf:type owl:Class ;
+     rdfs:subClassOf :AnorganicCompound ;
+     rdfs:comment "A state of matter where the substance expands freely to fill any space available, with molecules in constant random motion. Common gases include oxygen (O₂), nitrogen (N₂), and hydrogen (H₂), which are critical for biological and chemical processes."@en ;
+     rdfs:label "Gas"@en .
+
+
+###  https://purl.dsmz.de/schema/Gender
+:Gender rdf:type owl:Class ;
+        rdfs:subClassOf :PropertyOrAttribute ;
+        rdfs:comment "A biological and social characteristic of organisms that distinguishes male, female, and in some species, additional sex or gender categories."@en ;
+        rdfs:label "Gender"@en .
+
+
+###  https://purl.dsmz.de/schema/GeneExpression
+:GeneExpression rdf:type owl:Class ;
+                rdfs:subClassOf :Process ;
+                rdfs:comment "The process by which genetic information encoded in DNA is transcribed and translated to produce functional products, such as proteins, influencing cellular structure and function."@en ;
+                rdfs:label "Gene Expression"@en .
+
+
+###  https://purl.dsmz.de/schema/GeneIdentifier
+:GeneIdentifier rdf:type owl:Class ;
+                rdfs:subClassOf :MoleculeIdentifier ;
+                rdfs:comment "A unique identifier for a specific gene, used in various biological and genomic databases."@en ;
+                rdfs:label "Gene Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/GeneProduct
+:GeneProduct rdf:type owl:Class ;
+             rdfs:comment "Any biochemical substance that is the result of gene expression, including proteins and various forms of RNA. Gene products are central to cellular function and metabolism, acting in processes such as catalysis, structural support, and regulation."@en ;
+             rdfs:label "Gene Product"@en .
+
+
+###  https://purl.dsmz.de/schema/GeneSequence
+:GeneSequence rdf:type owl:Class ;
+              rdfs:subClassOf :DNASequence ;
+              rdfs:comment "A specific sequence of DNA that contains the necessary information to produce a functional product, typically a protein. Gene sequences are the fundamental units of heredity."@en ;
+              rdfs:label "Gene Sequence"@en .
+
+
+###  https://purl.dsmz.de/schema/GeneralStability
+:GeneralStability rdf:type owl:Class ;
+                  rdfs:subClassOf :Stability ;
+                  rdfs:comment "The overall stability of a substance, referring to its ability to remain intact and functional under a variety of conditions, including temperature, pressure, and exposure to light or chemicals."@en ;
+                  rdfs:label "General Stability"@en .
+
+
+###  https://purl.dsmz.de/schema/GenomeIdentifier
+:GenomeIdentifier rdf:type owl:Class ;
+                  rdfs:subClassOf :MoleculeIdentifier ;
+                  rdfs:comment "An identifier used to refer to a specific genome sequence in a database."@en ;
+                  rdfs:label "Genome Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/GenomeSequence
+:GenomeSequence rdf:type owl:Class ;
+                rdfs:subClassOf :DNASequence ;
+                rdfs:comment "The complete DNA sequence of an organism's genome, encompassing all of its genes and non-coding regions. Genome sequencing allows the study of the full genetic content of an organism."@en ;
+                rdfs:label "Genome Sequence"@en .
+
+
+###  https://purl.dsmz.de/schema/Genus
+:Genus rdf:type owl:Class ;
+       rdfs:subClassOf :TaxonomicRank ;
+       rdfs:comment "A rank in biological classification that groups together species with similar characteristics. The genus is placed above species and below family."@en ;
+       rdfs:label "Genus"@en .
+
+
+###  https://purl.dsmz.de/schema/GeographicArea
+:GeographicArea rdf:type owl:Class ;
+                rdfs:subClassOf :ConceptualEntity ;
+                rdfs:comment "Represents a defined physical space on Earth, often identified through coordinates or place names."@en ;
+                rdfs:label "Geographic Area"@en .
+
+
+###  https://purl.dsmz.de/schema/GeographicLocation
+:GeographicLocation rdf:type owl:Class ;
+                    rdfs:subClassOf :PropertyOrAttribute ;
+                    rdfs:comment "A property or attribute that defines the specific location of an object or organism on Earth, typically expressed through coordinates such as latitude and longitude."@en ;
+                    rdfs:label "Geographic Location"@en .
+
+
+###  https://purl.dsmz.de/schema/GlycanMetabolism
+:GlycanMetabolism rdf:type owl:Class ;
+                  rdfs:subClassOf :MetabolicPathway ;
+                  rdfs:comment "A metabolic pathway that involves the synthesis and breakdown of glycans (polysaccharides), which are important for energy storage, structural support, and cellular signaling."@en ;
+                  rdfs:label "Glycan Metabolism"@en .
+
+
+###  https://purl.dsmz.de/schema/GramNegativeBacteria
+:GramNegativeBacteria rdf:type owl:Class ;
+                      rdfs:subClassOf :OrganismGroup ;
+                      rdfs:comment "Bacteria that do not retain the crystal violet stain used in Gram staining. Gram-negative bacteria have an outer membrane and are often resistant to certain antibiotics."@en ;
+                      rdfs:label "Gram Negative Bacteria"@en .
+
+
+###  https://purl.dsmz.de/schema/GramPositiveBacteria
+:GramPositiveBacteria rdf:type owl:Class ;
+                      rdfs:subClassOf :OrganismGroup ;
+                      rdfs:comment "Bacteria that retain the crystal violet stain used in Gram staining. Gram-positive bacteria have a thick peptidoglycan layer in their cell walls."@en ;
+                      rdfs:label "Gram Positive Bacteria"@en .
+
+
+###  https://purl.dsmz.de/schema/GramStain
+:GramStain rdf:type owl:Class ;
+           rdfs:subClassOf :CellMorphology ;
+           rdfs:comment "A differential staining technique used to classify bacteria based on the composition of their cell walls. Bacteria can be categorized as Gram-positive or Gram-negative based on their response to the stain."@en ;
+           rdfs:label "Gram Stain"@en ;
+           rdfs:seeAlso <http://purl.obolibrary.org/obo/OMP_0000191> .
+
+
+###  https://purl.dsmz.de/schema/GrowthFactor
+:GrowthFactor rdf:type owl:Class ;
+              rdfs:subClassOf :Protein ;
+              rdfs:comment "Proteins that stimulate cell proliferation, differentiation, and survival. Growth factors are key regulators in developmental processes and tissue repair."@en ;
+              rdfs:label "Growth Factor"@en .
+
+
+###  https://purl.dsmz.de/schema/GrowthPH
+:GrowthPH rdf:type owl:Class ;
+          rdfs:subClassOf :pH ;
+          rdfs:label "Growth pH"@en .
+
+
+###  https://purl.dsmz.de/schema/GrowthRate
+:GrowthRate rdf:type owl:Class ;
+            rdfs:subClassOf :Rate ;
+            rdfs:comment "The rate at which an organism increases in size, mass, or population over time, typically expressed as a change per unit of time."@en ;
+            rdfs:label "Growth Rate"@en .
+
+
+###  https://purl.dsmz.de/schema/GrowthSalinity
+:GrowthSalinity rdf:type owl:Class ;
+                rdfs:subClassOf :Salinity ;
+                rdfs:comment "The specific range of salinity in which an organism can grow and reproduce effectively. This varies widely among organisms depending on their tolerance to salt concentration."@en ;
+                rdfs:label "Growth Salinity"@en .
+
+
+###  https://purl.dsmz.de/schema/GrowthTemperature
+:GrowthTemperature rdf:type owl:Class ;
+                   rdfs:subClassOf :Temperature ;
+                   rdfs:comment "The specific range of temperature within which an organism can grow and reproduce. This range varies for different organisms, depending on their environmental adaptations."@en ;
+                   rdfs:label "Growth Temperature"@en .
+
+
+###  https://purl.dsmz.de/schema/HTML
+:HTML rdf:type owl:Class ;
+      rdfs:subClassOf :FileFormat ;
+      rdfs:comment "A markup language used for structuring and displaying content on the web. HTML files contain elements such as text, images, and links that are used to build websites."@en ;
+      rdfs:label "HTML"@en .
+
+
+###  https://purl.dsmz.de/schema/Habitat
+:Habitat rdf:type owl:Class ;
+         rdfs:subClassOf :Environment ;
+         rdfs:comment "A specific environment where an organism lives, which provides the necessary resources and conditions for its survival and reproduction."@en ;
+         rdfs:label "Habitat"@en .
+
+
+###  https://purl.dsmz.de/schema/Height
+:Height rdf:type owl:Class ;
+        rdfs:subClassOf :Size ;
+        rdfs:comment "A measure of the vertical dimension of an object or organism from its base to its highest point."@en ;
+        rdfs:label "Height"@en .
+
+
+###  https://purl.dsmz.de/schema/Host
+:Host rdf:type owl:Class ;
+      rdfs:subClassOf :OrganismGroup ;
+      rdfs:comment "An organism that harbors a parasite, symbiont, or pathogen, providing nutrients or shelter. Hosts can be plants, animals, or microorganisms."@en ;
+      rdfs:label "Host"@en .
+
+
+###  https://purl.dsmz.de/schema/HumanPathogenicity
+:HumanPathogenicity rdf:type owl:Class ;
+                    rdfs:subClassOf :Pathogenicity ;
+                    rdfs:comment "The ability of an organism to cause disease in humans. Pathogenic organisms include bacteria, viruses, fungi, and parasites."@en ;
+                    rdfs:label "Human Pathogenicity"@en .
+
+
+###  https://purl.dsmz.de/schema/Humidity
+:Humidity rdf:type owl:Class ;
+          rdfs:subClassOf :PropertyOrAttribute ;
+          rdfs:comment "The concentration of water vapor in the air, typically expressed as a percentage. Humidity affects various environmental and biological processes, including climate, respiration, and microbial growth."@en ;
+          rdfs:label "Humidity"@en .
+
+
+###  https://purl.dsmz.de/schema/Hydrolases
+:Hydrolases rdf:type owl:Class ;
+            rdfs:subClassOf :Enzyme ;
+            rdfs:comment "A class of enzymes that catalyze the hydrolysis of chemical bonds, breaking down molecules by adding water. Examples include proteases, lipases, and nucleases."@en ;
+            rdfs:label "Hydrolases"@en .
+
+
+###  https://purl.dsmz.de/schema/IC50
+:IC50 rdf:type owl:Class ;
+      rdfs:subClassOf :MolecularProperty ;
+      rdfs:comment "The half-maximal inhibitory concentration (IC50) is a measure of the effectiveness of a substance in inhibiting a specific biological or biochemical function, typically used in drug discovery and toxicology."@en ;
+      rdfs:label "IC50"@en .
+
+
+###  https://purl.dsmz.de/schema/IUPACName
+:IUPACName rdf:type owl:Class ;
+           rdfs:subClassOf :CompoundName ;
+           rdfs:comment "The systematic name of a chemical compound, as determined by the International Union of Pure and Applied Chemistry (IUPAC)."@en ;
+           rdfs:label "IUPACName"@en .
+
+
+###  https://purl.dsmz.de/schema/Identifier
+:Identifier rdf:type owl:Class ;
+            rdfs:comment "A general term for a unique sequence or number used to identify a specific entity, such as a molecule, enzyme, gene, or organism in scientific databases."@en ;
+            rdfs:label "Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/Inchi
+:Inchi rdf:type owl:Class ;
+       rdfs:subClassOf :CompoundName ;
+       rdfs:comment "The IUPAC International Chemical Identifier (InChI) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information."@en ;
+       rdfs:label "Inchi"@en .
+
+
+###  https://purl.dsmz.de/schema/InchiKey
+:InchiKey rdf:type owl:Class ;
+          rdfs:subClassOf :CompoundName ;
+          rdfs:comment "A condensed, fixed-length version of the InChI, designed to be a more accessible way of indexing chemical substances."@en ;
+          rdfs:label "Inchi Key"@en .
+
+
+###  https://purl.dsmz.de/schema/IndustrialWaste
+:IndustrialWaste rdf:type owl:Class ;
+                 rdfs:subClassOf :Habitat ;
+                 rdfs:comment "Refers to environments that contain byproducts of industrial processes, often with chemicals or substances that can affect ecosystems or organisms living there."@en ;
+                 rdfs:label "Industrial Waste"@en .
+
+
+###  https://purl.dsmz.de/schema/Ingredient
+:Ingredient rdf:type owl:Class ;
+            rdfs:subClassOf :ChemicalRole ;
+            rdfs:comment "A chemical substance that is part of a mixture or formulation, such as an ingredient in a cultivation medium, food product, or pharmaceutical preparation."@en ;
+            rdfs:label "Ingredient"@en .
+
+
+###  https://purl.dsmz.de/schema/Inhibitor
+:Inhibitor rdf:type owl:Class ;
+           rdfs:subClassOf :Effector ;
+           rdfs:comment "An effector molecule that decreases the activity of an enzyme or protein, often by binding to its active site or altering its conformation."@en ;
+           rdfs:label "Inhibitor"@en .
+
+
+###  https://purl.dsmz.de/schema/IsolationHost
+:IsolationHost rdf:type owl:Class ;
+               rdfs:subClassOf :IsolationInformation ;
+               owl:disjointWith :IsolationSource ;
+               rdfs:comment "The specific organism from which a biological sample, strain, or microorganism was isolated. The host can play a significant role in determining the characteristics of the isolated strain."@en ;
+               rdfs:label "Isolation Host"@en .
+
+
+###  https://purl.dsmz.de/schema/IsolationInformation
+:IsolationInformation rdf:type owl:Class ;
+                      rdfs:subClassOf :Origin ;
+                      owl:disjointWith :LocationOfOrigin ;
+                      rdfs:comment "Information related to the process and circumstances of isolating a biological sample, such as the host from which it was taken, the procedure used, and the source of isolation."@en ;
+                      rdfs:label "Isolation Information"@en .
+
+
+###  https://purl.dsmz.de/schema/IsolationProcedure
+:IsolationProcedure rdf:type owl:Class ;
+                    rdfs:subClassOf :IsolationInformation ;
+                    rdfs:comment "The method or protocol used to obtain a biological specimen from its natural or artificial environment. This can include various techniques for ensuring the viability of the sample."@en ;
+                    rdfs:label "Isolation Procedure"@en .
+
+
+###  https://purl.dsmz.de/schema/IsolationSource
+:IsolationSource rdf:type owl:Class ;
+                 rdfs:subClassOf :IsolationInformation ;
+                 rdfs:comment "The specific material or environment from which a biological sample was taken, such as soil, water, or an organism. The source of isolation can influence the characteristics of the specimen."@en ;
+                 rdfs:label "Isolation Source"@en .
+
+
+###  https://purl.dsmz.de/schema/Isomerases
+:Isomerases rdf:type owl:Class ;
+            rdfs:subClassOf :Enzyme ;
+            rdfs:comment "Enzymes that catalyze the rearrangement of bonds within a molecule, changing it from one isomer to another. These enzymes are critical in metabolic pathways, such as glycolysis."@en ;
+            rdfs:label "Isomerases"@en .
+
+
+###  https://purl.dsmz.de/schema/JSON
+:JSON rdf:type owl:Class ;
+      rdfs:subClassOf :FileFormat ;
+      rdfs:comment "A lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. JSON is often used for transmitting data between web applications and servers."@en ;
+      rdfs:label "JSON"@en .
+
+
+###  https://purl.dsmz.de/schema/KEGGCompound-ID
+:KEGGCompound-ID rdf:type owl:Class ;
+                 rdfs:subClassOf :CompoundIdentifier ;
+                 rdfs:comment "An identifier used in the KEGG database to represent specific chemical compounds involved in metabolic pathways."@en .
+
+
+###  https://purl.dsmz.de/schema/Kingdom
+:Kingdom rdf:type owl:Class ;
+         rdfs:subClassOf :TaxonomicRank ;
+         rdfs:comment "A high-level taxonomic rank that groups organisms into major categories based on fundamental characteristics, such as Animalia, Plantae, and Fungi."@en ;
+         rdfs:label "Kingdom"@en .
+
+
+###  https://purl.dsmz.de/schema/Km
+:Km rdf:type owl:Class ;
+    rdfs:subClassOf :MolecularProperty ;
+    rdfs:comment "The Michaelis constant (Km) is a measure of the substrate concentration at which an enzyme-catalyzed reaction proceeds at half its maximum velocity, providing insight into enzyme affinity for a substrate."@en ;
+    rdfs:label "Km"@en .
+
+
+###  https://purl.dsmz.de/schema/LSU
+:LSU rdf:type owl:Class ;
+     rdfs:subClassOf :rRNA ;
+     owl:disjointWith :SSU ;
+     rdfs:comment "The rRNA component of the large subunit of the ribosome, involved in catalyzing peptide bond formation during protein synthesis."@en ;
+     rdfs:label "LSU"@en .
+
+
+###  https://purl.dsmz.de/schema/Lake
+:Lake rdf:type owl:Class ;
+      rdfs:subClassOf :Habitat ;
+      rdfs:comment "A freshwater or saline body of water that provides a habitat for various organisms. Lakes support unique ecosystems and can be subject to environmental changes such as pollution or climate variations."@en ;
+      rdfs:label "Lake"@en .
+
+
+###  https://purl.dsmz.de/schema/Latitude
+:Latitude rdf:type owl:Class ;
+          rdfs:subClassOf :GeographicLocation ;
+          owl:disjointWith :Longitude ;
+          rdfs:comment "A geographic coordinate that specifies the north-south position of a point on the Earth's surface, measured in degrees from the equator."@en ;
+          rdfs:label "Latitude"@en .
+
+
+###  https://purl.dsmz.de/schema/Length
+:Length rdf:type owl:Class ;
+        rdfs:subClassOf :Size ;
+        rdfs:comment "A measure of the distance from one end of an object to the other, typically in the longest dimension."@en ;
+        rdfs:label "Length"@en .
+
+
+###  https://purl.dsmz.de/schema/Ligases
+:Ligases rdf:type owl:Class ;
+         rdfs:subClassOf :Enzyme ;
+         rdfs:comment "Enzymes that catalyze the joining of two molecules by forming new chemical bonds, often requiring energy from ATP. Ligases play an important role in DNA replication and repair."@en ;
+         rdfs:label "Ligases"@en .
+
+
+###  https://purl.dsmz.de/schema/Light
+:Light rdf:type owl:Class ;
+       rdfs:subClassOf :PhysicalParameter ;
+       rdfs:comment "A physical parameter referring to electromagnetic radiation that is visible to the human eye. Light intensity and wavelength can significantly affect biological processes such as photosynthesis."@en ;
+       rdfs:label "Light"@en .
+
+
+###  https://purl.dsmz.de/schema/LipidMetabolism
+:LipidMetabolism rdf:type owl:Class ;
+                 rdfs:subClassOf :MetabolicPathway ;
+                 rdfs:comment "A metabolic pathway responsible for the synthesis, breakdown, and storage of lipids (fats), which are crucial for energy storage, cell membrane structure, and signaling."@en ;
+                 rdfs:label "Lipid Metabolism"@en .
+
+
+###  https://purl.dsmz.de/schema/Literature
+:Literature rdf:type owl:Class ;
+            rdfs:subClassOf :Record ;
+            rdfs:comment "Published works, including scientific papers, articles, books, and reports, that provide information, research findings, or reviews in a specific field of study. Literature serves as a key source of knowledge and reference."@en ;
+            rdfs:label "Literature"@en .
+
+
+###  https://purl.dsmz.de/schema/LiteratureIdentifier
+:LiteratureIdentifier rdf:type owl:Class ;
+                      rdfs:subClassOf :Identifier ;
+                      rdfs:comment "A type of identifier used to reference scientific literature or publications, often linked to specific articles or datasets."@en ;
+                      rdfs:label "Literature Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/LocationOfOrigin
+:LocationOfOrigin rdf:type owl:Class ;
+                  rdfs:subClassOf :Origin ;
+                  rdfs:comment "The geographic or environmental location where a biological specimen was originally found or collected. This can refer to a specific country, region, or ecosystem."@en ;
+                  rdfs:label "Location of Origin"@en .
+
+
+###  https://purl.dsmz.de/schema/LocusTag
+:LocusTag rdf:type owl:Class ;
+          rdfs:subClassOf :GeneIdentifier ;
+          rdfs:comment "A unique identifier for a gene or locus within a particular genome, often used in microbial genome annotation."@en ;
+          rdfs:label "Locus Tag"@en .
+
+
+###  https://purl.dsmz.de/schema/Longitude
+:Longitude rdf:type owl:Class ;
+           rdfs:subClassOf :GeographicLocation ;
+           rdfs:comment "A geographic coordinate that specifies the east-west position of a point on the Earth's surface, measured in degrees from the prime meridian."@en ;
+           rdfs:label "Longitude"@en .
+
+
+###  https://purl.dsmz.de/schema/Lyases
+:Lyases rdf:type owl:Class ;
+        rdfs:subClassOf :Enzyme ;
+        rdfs:comment "A class of enzymes that catalyze the breaking of chemical bonds by means other than hydrolysis or oxidation, often forming double bonds or ring structures. Examples include decarboxylases and dehydratases."@en ;
+        rdfs:label "Lyases"@en .
+
+
+###  https://purl.dsmz.de/schema/Lymph
+:Lymph rdf:type owl:Class ;
+       rdfs:subClassOf :BodyFluid ;
+       rdfs:label "Lymph"@en .
+
+
+###  https://purl.dsmz.de/schema/MarineOrganism
+:MarineOrganism rdf:type owl:Class ;
+                rdfs:subClassOf :OrganismGroup ;
+                rdfs:comment "An organism that lives in or is dependent on marine environments such as oceans or seas. Marine organisms include fish, corals, and various microorganisms."@en ;
+                rdfs:label "Marine Organism"@en .
+
+
+###  https://purl.dsmz.de/schema/MaximumPH
+:MaximumPH rdf:type owl:Class ;
+           rdfs:subClassOf :pH ;
+           rdfs:label "Maximum pH"@en .
+
+
+###  https://purl.dsmz.de/schema/MaximumSalinity
+:MaximumSalinity rdf:type owl:Class ;
+                 rdfs:subClassOf :Salinity ;
+                 rdfs:comment "The highest concentration of salt in an environment that an organism can tolerate without experiencing significant physiological stress or mortality."@en ;
+                 rdfs:label "Maximum Salinity"@en .
+
+
+###  https://purl.dsmz.de/schema/MaximumTemperature
+:MaximumTemperature rdf:type owl:Class ;
+                    rdfs:subClassOf :Temperature ;
+                    rdfs:comment "The highest temperature at which an organism can survive or remain active. Above this temperature, proteins may denature, and cellular processes can fail, leading to organism death."@en ;
+                    rdfs:label "Maximum Temperature"@en .
+
+
+###  https://purl.dsmz.de/schema/MetabolicPathway
+:MetabolicPathway rdf:type owl:Class ;
+                  rdfs:subClassOf :BiochemicalPathway ;
+                  rdfs:comment "A biochemical pathway that involves the series of reactions responsible for the production, conversion, and breakdown of molecules within an organism to sustain life, provide energy, and maintain cellular structures."@en ;
+                  rdfs:label "Metabolic Pathway"@en .
+
+
+###  https://purl.dsmz.de/schema/MetabolicPhenotype
+:MetabolicPhenotype rdf:type owl:Class ;
+                    rdfs:subClassOf :Phenotype ;
+                    rdfs:comment "The set of traits related to an organism's metabolic processes, including the utilization of energy sources, nutrient requirements, and tolerance to environmental factors such as oxygen and salt."@en ;
+                    rdfs:label "Metabolic Phenotype"@en ;
+                    rdfs:seeAlso <http://purl.jp/bio/10/mpo#MPO_04000> .
+
+
+###  https://purl.dsmz.de/schema/MetabolicProcess
+:MetabolicProcess rdf:type owl:Class ;
+                  rdfs:subClassOf :Process ;
+                  rdfs:comment "A broad term for the chemical reactions and pathways occurring within a cell or organism that allow it to grow, reproduce, maintain its structures, and respond to environmental changes."@en ;
+                  rdfs:label "Metabolic Process"@en .
+
+
+###  https://purl.dsmz.de/schema/Metazoa
+:Metazoa rdf:type owl:Class ;
+         rdfs:subClassOf :Organism ;
+         rdfs:comment "Multicellular animals that form a distinct group characterized by differentiated cells and tissues. Metazoans include all animal species, ranging from simple sponges to highly complex mammals. They play diverse roles in ecosystems and have complex life cycles."@en ;
+         rdfs:label "Metazoa"@en .
+
+
+###  https://purl.dsmz.de/schema/Method
+:Method rdf:type owl:Class ;
+        rdfs:comment "A general concept referring to a systematic procedure or technique used to accomplish a task or achieve a result in a scientific or experimental setting."@en ,
+                     "Method to identify the details of the bacteria and it's related property" ;
+        rdfs:label "Method"@en .
+
+
+###  https://purl.dsmz.de/schema/MicrobialPhenotype
+:MicrobialPhenotype rdf:type owl:Class ;
+                    rdfs:subClassOf :Phenotype ;
+                    rdfs:comment "The observable traits and characteristics of microorganisms, including cell structure, colony appearance, motility, and the ability to form spores."@en ;
+                    rdfs:label "Microbial Phenotype"@en ;
+                    rdfs:seeAlso :MicrobialPhenotype .
+
+
+###  https://purl.dsmz.de/schema/Microbiome
+:Microbiome rdf:type owl:Class ;
+            rdfs:subClassOf :OrganismGroup ;
+            rdfs:comment "A community of microorganisms living in a particular environment, such as the human gut, soil, or marine ecosystems."@en ;
+            rdfs:label "Microbiome"@en .
+
+
+###  https://purl.dsmz.de/schema/Microorganism
+:Microorganism rdf:type owl:Class ;
+               rdfs:subClassOf :DISCONTINUED ,
+                               :OrganismGroup ;
+               rdfs:comment "A broad class encompassing microscopic organisms that can be single-celled or multicellular. Microorganisms include bacteria, archaea, fungi, and protists. They play a crucial role in ecosystems, health, and biotechnology."@en ;
+               rdfs:label "Microorganism"@en .
+
+
+###  https://purl.dsmz.de/schema/MinimumPH
+:MinimumPH rdf:type owl:Class ;
+           rdfs:subClassOf :pH ;
+           rdfs:label "Minimum pH"@en .
+
+
+###  https://purl.dsmz.de/schema/MinimumSalinity
+:MinimumSalinity rdf:type owl:Class ;
+                 rdfs:subClassOf :Salinity ;
+                 rdfs:comment "The lowest concentration of salt that an organism can tolerate for survival or growth. Below this threshold, biological functions may be impaired."@en ;
+                 rdfs:label "Minimum Salinity"@en .
+
+
+###  https://purl.dsmz.de/schema/MinimumTemperature
+:MinimumTemperature rdf:type owl:Class ;
+                    rdfs:subClassOf :Temperature ;
+                    rdfs:comment "The lowest temperature at which an organism can survive or remain active. Below this temperature, cellular processes slow down or cease, affecting the organism’s growth and survival."@en ;
+                    rdfs:label "Minimum Temperature"@en .
+
+
+###  https://purl.dsmz.de/schema/MolecularProperty
+:MolecularProperty rdf:type owl:Class ;
+                   rdfs:subClassOf :PropertyOrAttribute ;
+                   rdfs:comment "A measurable characteristic of a molecule, such as its chemical structure, stability, molecular weight, or behavior in chemical reactions. Molecular properties are fundamental for understanding chemical and biological function."@en ;
+                   rdfs:label "Molecular Property"@en .
+
+
+###  https://purl.dsmz.de/schema/MolecularStructure
+:MolecularStructure rdf:type owl:Class ;
+                    rdfs:subClassOf :PropertyOrAttribute ;
+                    rdfs:label "Molecular Structure"@en .
+
+
+###  https://purl.dsmz.de/schema/MolecularWeight
+:MolecularWeight rdf:type owl:Class ;
+                 rdfs:subClassOf :MolecularProperty ,
+                                 :Weight ;
+                 rdfs:comment "The total mass of a molecule, calculated as the sum of the atomic masses of its constituent atoms. Molecular weight is a critical parameter in understanding molecular interactions and reactions."@en ,
+                              "The total mass of a molecule, typically expressed in Daltons (Da) or atomic mass units (amu). Molecular weight is crucial for understanding molecular behavior in biochemical and physical processes."@en ;
+                 rdfs:label "Molecular Weight"@en .
+
+
+###  https://purl.dsmz.de/schema/MoleculeIdentifier
+:MoleculeIdentifier rdf:type owl:Class ;
+                    rdfs:subClassOf :Identifier ;
+                    rdfs:comment "A general category for identifiers that refer to specific molecules in chemical and biological databases."@en ;
+                    rdfs:label "Molecule Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/MotilityPathway
+:MotilityPathway rdf:type owl:Class ;
+                 rdfs:subClassOf :BiochemicalPathway ;
+                 rdfs:comment "A biochemical pathway involved in the processes that allow organisms or cells to move, often through mechanisms such as flagella, cilia, or muscle contraction."@en ;
+                 rdfs:label "Motility Pathway"@en .
+
+
+###  https://purl.dsmz.de/schema/Mucus
+:Mucus rdf:type owl:Class ;
+       rdfs:subClassOf :BodyFluid ;
+       rdfs:label "Mucus"@en .
+
+
+###  https://purl.dsmz.de/schema/MulticelluarOrganism
+:MulticelluarOrganism rdf:type owl:Class ;
+                      rdfs:subClassOf :Organism ;
+                      rdfs:comment "Organisms composed of multiple cells that form specialized tissues and organs. Multicellular organisms include plants, animals, and fungi, and they display a complex organization that allows for the division of labor between cells."@en ;
+                      rdfs:label "Multicelluar Organism"@en .
+
+
+###  https://purl.dsmz.de/schema/Mutation
+:Mutation rdf:type owl:Class ;
+          rdfs:subClassOf :ConceptualEntity ;
+          rdfs:comment "A change in the genetic material of an organism that can result in different traits or characteristics. Mutations can occur naturally or be induced and can have various impacts on organisms."@en ;
+          rdfs:label "Mutation"@en .
+
+
+###  https://purl.dsmz.de/schema/NCBIGeneID
+:NCBIGeneID rdf:type owl:Class ;
+            rdfs:subClassOf :GeneIdentifier ;
+            rdfs:comment "An identifier used by the National Center for Biotechnology Information (NCBI) to uniquely refer to a gene."@en ;
+            rdfs:label "NCBIGeneID"@en .
+
+
+###  https://purl.dsmz.de/schema/NCBIGenomeAccession
+:NCBIGenomeAccession rdf:type owl:Class ;
+                     rdfs:subClassOf :GenomeIdentifier ;
+                     rdfs:comment "A unique identifier assigned to a genome sequence in the NCBI database, used for retrieval and reference."@en ;
+                     rdfs:label "NCBIGenome Accession"@en .
+
+
+###  https://purl.dsmz.de/schema/NitrogenSource
+:NitrogenSource rdf:type owl:Class ;
+                rdfs:subClassOf :BiologicalRole ;
+                rdfs:comment "A biological role in which a substance provides nitrogen, often necessary for the synthesis of amino acids, nucleic acids, and other vital compounds in organisms. Examples include ammonia, nitrates, and nitrogen gas."@en ;
+                rdfs:label "Nitrogen Source"@en .
+
+
+###  https://purl.dsmz.de/schema/NucleotideMetabolism
+:NucleotideMetabolism rdf:type owl:Class ;
+                      rdfs:subClassOf :MetabolicPathway ;
+                      rdfs:comment "A metabolic pathway involved in the synthesis and degradation of nucleotides, the building blocks of DNA and RNA, essential for cell division and genetic information transmission."@en ;
+                      rdfs:label "Nucleotide Metabolism"@en .
+
+
+###  https://purl.dsmz.de/schema/NucleotideSequence
+:NucleotideSequence rdf:type owl:Class ;
+                    rdfs:comment "A sequence of nucleotides (adenine, thymine, cytosine, guanine in DNA; adenine, uracil, cytosine, guanine in RNA) that carries genetic information. Nucleotide sequences form the basis of DNA and RNA structures."@en ;
+                    rdfs:label "Nucleotide Sequence"@en .
+
+
+###  https://purl.dsmz.de/schema/NutritionType
+:NutritionType rdf:type owl:Class ;
+               rdfs:subClassOf :MetabolicPhenotype ;
+               rdfs:comment "The classification of an organism based on how it obtains its nutrients, such as autotrophic (producing its own food) or heterotrophic (obtaining food from external sources)."@en ;
+               rdfs:label "Nutrition Type"@en .
+
+
+###  https://purl.dsmz.de/schema/OBO
+:OBO rdf:type owl:Class ;
+     rdfs:subClassOf :FileFormat ;
+     rdfs:comment "A file format used for representing ontologies in a structured format. OBO (Open Biological and Biomedical Ontology) is widely used in bioinformatics for sharing and curating ontologies."@en ;
+     rdfs:label "OBO"@en .
+
+
+###  https://purl.dsmz.de/schema/OpenAlexID
+:OpenAlexID rdf:type owl:Class ;
+            rdfs:subClassOf :LiteratureIdentifier ;
+            rdfs:comment "An identifier used in the OpenAlex database for tracking scholarly works and academic entities."@en ;
+            rdfs:label "OpenAlex-ID"@en .
+
+
+###  https://purl.dsmz.de/schema/OptimumPH
+:OptimumPH rdf:type owl:Class ;
+           rdfs:subClassOf :pH ;
+           rdfs:label "Optimum pH"@en .
+
+
+###  https://purl.dsmz.de/schema/OptimumSalinity
+:OptimumSalinity rdf:type owl:Class ;
+                 rdfs:subClassOf :Salinity ;
+                 rdfs:comment "The salinity range that supports the most efficient growth and reproduction of an organism, representing ideal environmental conditions for biological activity."@en ;
+                 rdfs:label "Optimum Salinity"@en .
+
+
+###  https://purl.dsmz.de/schema/OptimumTemperature
+:OptimumTemperature rdf:type owl:Class ;
+                    rdfs:subClassOf :Temperature ;
+                    rdfs:comment "The temperature range at which an organism exhibits the most efficient growth and biological activity. This is typically the mid-range temperature between the maximum and minimum limits for growth."@en ;
+                    rdfs:label "Optimum Temperature"@en .
+
+
+###  https://purl.dsmz.de/schema/Order
+:Order rdf:type owl:Class ;
+       rdfs:subClassOf :TaxonomicRank ;
+       rdfs:comment "A taxonomic rank used to group families with shared traits, placed below class and above family."@en ;
+       rdfs:label "Order"@en .
+
+
+###  https://purl.dsmz.de/schema/Organ
+:Organ rdf:type owl:Class ;
+       rdfs:subClassOf :AnatomicStructure ;
+       rdfs:label "Organ"@en .
+
+
+###  https://purl.dsmz.de/schema/OrganicCompound
+:OrganicCompound rdf:type owl:Class ;
+                 rdfs:subClassOf :ChemicalCompound ;
+                 rdfs:comment "Compounds that contain carbon atoms bonded to hydrogen and often other elements like oxygen, nitrogen, or sulfur. Organic compounds are the basis of life on Earth and are essential in biochemistry, pharmaceuticals, and materials science."@en ;
+                 rdfs:label "Organic Compound"@en .
+
+
+###  https://purl.dsmz.de/schema/Organism
+:Organism rdf:type owl:Class ;
+          rdfs:subClassOf :BiologicalMaterial .
+
+
+###  https://purl.dsmz.de/schema/OrganismGroup
+:OrganismGroup rdf:type owl:Class ;
+               rdfs:subClassOf :ConceptualEntity ;
+               rdfs:comment "A classification of organisms based on shared characteristics, such as oxygen requirements, gram staining, or genetic modifications."@en ;
+               rdfs:label "Organism Group"@en .
+
+
+###  https://purl.dsmz.de/schema/OrganismIdentifier
+:OrganismIdentifier rdf:type owl:Class ;
+                    rdfs:subClassOf :Identifier ;
+                    rdfs:comment "A general identifier used to refer to specific organisms or strains in biological databases."@en ;
+                    rdfs:label "Organism Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/Origin
+:Origin rdf:type owl:Class ;
+        rdfs:comment "A general concept referring to the source or place from which a biological specimen, strain, or sample was derived. This includes information about the isolation procedure, host, and location of origin."@en ;
+        rdfs:label "Origin"@en .
+
+
+###  https://purl.dsmz.de/schema/OxidationStability
+:OxidationStability rdf:type owl:Class ;
+                    rdfs:subClassOf :Stability ;
+                    rdfs:comment "The resistance of a substance to oxidation, a chemical process in which it loses electrons. Oxidation stability is important for determining the shelf-life and reactivity of compounds, especially in organic chemistry."@en ;
+                    rdfs:label "Oxidation Stability"@en .
+
+
+###  https://purl.dsmz.de/schema/Oxidoreductases
+:Oxidoreductases rdf:type owl:Class ;
+                 rdfs:subClassOf :Enzyme ;
+                 rdfs:comment "Enzymes that catalyze oxidation-reduction (redox) reactions, transferring electrons between molecules. These enzymes are vital for energy production and metabolic processes such as respiration."@en ;
+                 rdfs:label "Oxidoreductases"@en .
+
+
+###  https://purl.dsmz.de/schema/OxygenTolerance
+:OxygenTolerance rdf:type owl:Class ;
+                 rdfs:subClassOf :MetabolicPhenotype ;
+                 rdfs:comment "The ability of an organism to survive and grow in the presence or absence of oxygen, ranging from obligate aerobes to obligate anaerobes, as well as facultative anaerobes."@en ;
+                 rdfs:label "Oxygen Tolerance"@en ;
+                 rdfs:seeAlso <http://purl.jp/bio/10/mpo#MPO_04001> .
+
+
+###  https://purl.dsmz.de/schema/PDB-ID
+:PDB-ID rdf:type owl:Class ;
+        rdfs:subClassOf :ProteinIdentifier ;
+        rdfs:comment "A unique identifier used by the Protein Data Bank (PDB) to refer to a specific protein structure."@en .
+
+
+###  https://purl.dsmz.de/schema/Parasite
+:Parasite rdf:type owl:Class ;
+          rdfs:subClassOf :OrganismGroup ;
+          rdfs:comment "An organism that lives on or inside a host organism and benefits at the host’s expense, often causing harm or disease."@en ;
+          rdfs:label "Parasite"@en .
+
+
+###  https://purl.dsmz.de/schema/Pathogenicity
+:Pathogenicity rdf:type owl:Class ;
+               rdfs:subClassOf :ConceptualEntity ;
+               rdfs:comment "Describes the ability of an organism to cause disease in a host organism, varying in severity and specificity to different hosts."@en ;
+               rdfs:label "Pathogenicity"@en .
+
+
+###  https://purl.dsmz.de/schema/Phenotype
+:Phenotype rdf:type owl:Class ;
+           rdfs:comment "The observable characteristics or traits of an organism, which result from the interaction of its genotype with the environment. Phenotypes can include metabolic, morphological, and behavioral traits."@en ;
+           rdfs:label "Phenotype"@en .
+
+
+###  https://purl.dsmz.de/schema/Phylum
+:Phylum rdf:type owl:Class ;
+        rdfs:subClassOf :TaxonomicRank ;
+        rdfs:comment "A taxonomic rank used to classify organisms based on major body plans or organizational characteristics, placed below kingdom and above class."@en ;
+        rdfs:label "Phylum"@en .
+
+
+###  https://purl.dsmz.de/schema/PhysicalParameter
+:PhysicalParameter rdf:type owl:Class ;
+                   rdfs:subClassOf :PropertyOrAttribute ;
+                   rdfs:comment "A measurable characteristic that defines the physical conditions or properties of a system or environment, such as temperature, light, pressure, and salinity."@en ;
+                   rdfs:label "Physical Parameter"@en .
+
+
+###  https://purl.dsmz.de/schema/PlantPathogenicity
+:PlantPathogenicity rdf:type owl:Class ;
+                    rdfs:subClassOf :Pathogenicity ;
+                    rdfs:comment "The ability of an organism to cause disease in plants, leading to agricultural damage and economic losses."@en ;
+                    rdfs:label "Plant Pathogenicity"@en .
+
+
+###  https://purl.dsmz.de/schema/Precision
+:Precision rdf:type owl:Class ;
+           rdfs:subClassOf :PropertyOrAttribute ;
+           rdfs:comment "A measure of the exactness or reproducibility of a result or measurement, often used in scientific experiments and data analysis to ensure accuracy and reliability."@en ;
+           rdfs:label "Precision"@en .
+
+
+###  https://purl.dsmz.de/schema/Pressure
+:Pressure rdf:type owl:Class ;
+          rdfs:subClassOf :PhysicalParameter ;
+          rdfs:comment "The force exerted per unit area by gases or liquids on surfaces. Pressure plays a crucial role in physical and biological processes, influencing gas exchange and structural integrity of cells and organisms."@en ;
+          rdfs:label "Pressure"@en .
+
+
+###  https://purl.dsmz.de/schema/Process
+:Process rdf:type owl:Class ;
+         rdfs:comment "A sequence of events or actions carried out by biological or chemical mechanisms, resulting in a specific outcome or transformation within an organism or system."@en ;
+         rdfs:label "Process"@en .
+
+
+###  https://purl.dsmz.de/schema/Product
+:Product rdf:type owl:Class ;
+         rdfs:subClassOf :ChemicalRole ;
+         rdfs:comment "The final chemical compound or substance that results from a chemical reaction. Products are the outcomes of metabolic or synthetic processes and can be intermediates in further reactions."@en ;
+         rdfs:label "Product"@en .
+
+
+###  https://purl.dsmz.de/schema/Prokaryotes
+:Prokaryotes rdf:type owl:Class ;
+             rdfs:subClassOf :Organism ;
+             rdfs:comment "Organisms that lack a defined nucleus and other membrane-bound organelles. Prokaryotes include bacteria and archaea, which are known for their diverse metabolic pathways and roles in the environment."@en ;
+             rdfs:label "Prokaryote"@en .
+
+
+###  https://purl.dsmz.de/schema/PropertyOrAttribute
+:PropertyOrAttribute rdf:type owl:Class ;
+                     rdfs:comment "A general concept referring to measurable or observable characteristics of an entity, such as physical properties, biological attributes, or other traits used for analysis and classification."@en ;
+                     rdfs:label "Property or Attribute"@en .
+
+
+###  https://purl.dsmz.de/schema/Protein
+:Protein rdf:type owl:Class ;
+         rdfs:subClassOf :GeneProduct ;
+         rdfs:comment "A complex macromolecule composed of one or more chains of amino acids. Proteins perform a wide range of functions in organisms, including catalyzing metabolic reactions, providing structural support, and regulating gene expression."@en ;
+         rdfs:label "Protein"@en .
+
+
+###  https://purl.dsmz.de/schema/ProteinIdentifier
+:ProteinIdentifier rdf:type owl:Class ;
+                   rdfs:subClassOf :MoleculeIdentifier ;
+                   rdfs:comment "A unique identifier for a specific protein sequence or structure in a biological database."@en ;
+                   rdfs:label "Protein Identifier"@en .
+
+
+###  https://purl.dsmz.de/schema/Protozoa
+:Protozoa rdf:type owl:Class ;
+          rdfs:subClassOf :Eukaryotes ;
+          rdfs:comment "A diverse group of unicellular eukaryotic organisms, often considered animal-like due to their ability to move and consume organic material. Protozoa are found in diverse environments and can be free-living or parasitic."@en ;
+          rdfs:label "Protozoa"@en .
+
+
+###  https://purl.dsmz.de/schema/PubChem-ID
+:PubChem-ID rdf:type owl:Class ;
+            rdfs:subClassOf :CompoundIdentifier ;
+            rdfs:comment "A unique identifier used by the PubChem database to track small molecules and their biological activities."@en .
+
+
+###  https://purl.dsmz.de/schema/PubmedID
+:PubmedID rdf:type owl:Class ;
+          rdfs:subClassOf :LiteratureIdentifier ;
+          rdfs:comment "A unique identifier for articles in the PubMed database, which contains references and abstracts on life sciences and biomedical topics."@en ;
+          rdfs:label "Pubmed-ID"@en .
+
+
+###  https://purl.dsmz.de/schema/Purification
+:Purification rdf:type owl:Class ;
+              rdfs:subClassOf :MolecularProperty ;
+              rdfs:comment "The process of isolating a specific molecule or substance from a mixture, removing contaminants and unwanted substances, often to achieve a high degree of purity for experimental or industrial use."@en ;
+              rdfs:label "Purification"@en .
+
+
+###  https://purl.dsmz.de/schema/RDF
+:RDF rdf:type owl:Class ;
+     rdfs:subClassOf :FileFormat ;
+     rdfs:comment "A framework for representing information about resources in the web, where the data is modeled in triples. RDF (Resource Description Framework) is used in semantic web technologies for linking and querying data."@en ;
+     rdfs:label "RDF"@en .
+
+
+###  https://purl.dsmz.de/schema/RNASequence
+:RNASequence rdf:type owl:Class ;
+             rdfs:subClassOf :NucleotideSequence ;
+             rdfs:comment "A sequence of nucleotides in RNA that plays various roles in gene expression and regulation. RNA sequences include mRNA, rRNA, tRNA, and other types of RNA involved in cellular processes."@en ;
+             rdfs:label "RNASequence"@en .
+
+
+###  https://purl.dsmz.de/schema/Rate
+:Rate rdf:type owl:Class ;
+      rdfs:subClassOf :PropertyOrAttribute ;
+      rdfs:comment "A property or attribute that describes the speed or frequency at which a process occurs, such as growth, reaction, or survival rates."@en ;
+      rdfs:label "Rate"@en .
+
+
+###  https://purl.dsmz.de/schema/ReactionRate
+:ReactionRate rdf:type owl:Class ;
+              rdfs:subClassOf :Rate ;
+              rdfs:comment "The speed at which a chemical or biochemical reaction occurs, often influenced by factors such as temperature, concentration, and catalyst presence."@en ;
+              rdfs:label "Reaction Rate"@en .
+
+
+###  https://purl.dsmz.de/schema/Record
+:Record rdf:type owl:Class ;
+        rdfs:comment "A documented or stored piece of information or data that is maintained for reference or analysis. Records can take many forms, including datasets, literature, and references."@en ;
+        rdfs:label "Record"@en .
+
+
+###  https://purl.dsmz.de/schema/Reference
+:Reference rdf:type owl:Class ;
+           rdfs:comment "A citation or mention of a source that provides support, evidence, or additional information for a particular statement or finding. References are commonly used in academic and scientific work to attribute credit to previous research."@en ;
+           rdfs:label "Reference"@en .
+
+
+###  https://purl.dsmz.de/schema/RegulatoryPathway
+:RegulatoryPathway rdf:type owl:Class ;
+                   rdfs:subClassOf :BiochemicalPathway ;
+                   rdfs:comment "A biochemical pathway that regulates the activity of enzymes, genes, or other cellular processes, ensuring proper function and response to internal or external stimuli."@en ;
+                   rdfs:label "Regulatory Pathway"@en .
+
+
+###  https://purl.dsmz.de/schema/Riboprotein
+:Riboprotein rdf:type owl:Class ;
+             rdfs:subClassOf :Protein ;
+             rdfs:comment "A complex formed by the association of proteins and ribonucleic acids (RNAs), often involved in protein synthesis. Riboproteins are a key component of the ribosome and other ribonucleoprotein complexes."@en ;
+             rdfs:label "Riboprotein"@en .
+
+
+###  https://purl.dsmz.de/schema/RiskAssessment
+:RiskAssessment rdf:type owl:Class ;
+                rdfs:comment "A systematic process used to identify, evaluate, and estimate the potential risks to health, safety, environment, or assets. Risk assessments help in decision-making by determining the likelihood and impact of adverse events and suggesting mitigation strategies."@en ;
+                rdfs:label "Risk Assessment"@en .
+
+
+###  https://purl.dsmz.de/schema/SMILES
+:SMILES rdf:type owl:Class ;
+        rdfs:subClassOf :CompoundName ;
+        rdfs:comment "A text-based representation of a molecule's structure, using a line notation to describe the arrangement of atoms and bonds."@en ;
+        rdfs:label "SMILES"@en .
+
+
+###  https://purl.dsmz.de/schema/SSU
+:SSU rdf:type owl:Class ;
+     rdfs:subClassOf :rRNA ;
+     rdfs:comment "The rRNA component of the small subunit of the ribosome, responsible for decoding the mRNA sequence during protein synthesis."@en ;
+     rdfs:label "SSU"@en .
+
+
+###  https://purl.dsmz.de/schema/Salinity
+:Salinity rdf:type owl:Class ;
+          rdfs:subClassOf :PhysicalParameter ;
+          rdfs:comment "The concentration of salts in a given environment, typically expressed in parts per thousand (ppt) or percent. Salinity is a critical factor in determining the survival and growth of organisms in aquatic ecosystems."@en ;
+          rdfs:label "Salinity"@en .
+
+
+###  https://purl.dsmz.de/schema/Salt
+:Salt rdf:type owl:Class ;
+      rdfs:subClassOf :AnorganicCompound ;
+      rdfs:comment "An ionic compound formed by the neutralization reaction between an acid and a base. Salts consist of a cation (positive ion) and an anion (negative ion) and are essential in biological systems, chemistry, and industrial applications. Sodium chloride (NaCl) is a common example."@en ;
+      rdfs:label "Salt"@en .
+
+
+###  https://purl.dsmz.de/schema/SaltTolerance
+:SaltTolerance rdf:type owl:Class ;
+               rdfs:subClassOf :MetabolicPhenotype ;
+               rdfs:comment "The ability of an organism to tolerate and thrive in environments with varying concentrations of salt, ranging from non-halophiles to extreme halophiles."@en ;
+               rdfs:label "Salt Tolerance"@en .
+
+
+###  https://purl.dsmz.de/schema/Sea
+:Sea rdf:type owl:Class ;
+     rdfs:subClassOf :Habitat ;
+     rdfs:comment "A large saline body of water that connects to the ocean and provides a habitat for marine life. Seas play a significant role in global ecosystems and can support a wide diversity of organisms."@en ;
+     rdfs:label "Sea"@en .
+
+
+###  https://purl.dsmz.de/schema/SecondaryMetaboliteBiosynthesis
+:SecondaryMetaboliteBiosynthesis rdf:type owl:Class ;
+                                 rdfs:subClassOf :MetabolicPathway ;
+                                 rdfs:comment "A biochemical pathway involved in the production of secondary metabolites, compounds that are not directly involved in growth or reproduction but play roles in defense, competition, or signaling in microorganisms, plants, and animals."@en ;
+                                 rdfs:label "Secondary Metabolite Biosynthesis"@en .
+
+
+###  https://purl.dsmz.de/schema/SequenceFeature
+:SequenceFeature rdf:type owl:Class ;
+                 rdfs:subClassOf :Feature ;
+                 rdfs:comment "A defined region within a nucleotide or protein sequence that has functional or structural significance, such as exons, promoters, binding sites, or motifs."@en ;
+                 rdfs:label "Sequence Feature"@en .
+
+
+###  https://purl.dsmz.de/schema/Serum
+:Serum rdf:type owl:Class ;
+       rdfs:subClassOf :BodyFluid ;
+       rdfs:label "Serum"@en .
+
+
+###  https://purl.dsmz.de/schema/Shape
+:Shape rdf:type owl:Class ;
+       rdfs:subClassOf :PropertyOrAttribute ;
+       rdfs:comment "The geometric form or outline of an object or organism, which can vary based on its structure, function, or environmental influences."@en ;
+       rdfs:label "Shape"@en .
+
+
+###  https://purl.dsmz.de/schema/SignalingPathway
+:SignalingPathway rdf:type owl:Class ;
+                  rdfs:subClassOf :BiochemicalPathway ;
+                  rdfs:comment "A sequence of molecular events initiated by a signal (e.g., a hormone, neurotransmitter, or environmental stimulus) that triggers a specific cellular response, such as growth, division, or metabolism."@en ;
+                  rdfs:label "Signaling Pathway"@en .
+
+
+###  https://purl.dsmz.de/schema/Size
+:Size rdf:type owl:Class ;
+      rdfs:subClassOf :PropertyOrAttribute ;
+      rdfs:comment "The overall dimensions or magnitude of an object or organism, often measured in terms of height, length, or volume."@en ;
+      rdfs:label "Size"@en .
+
+
+###  https://purl.dsmz.de/schema/Soil
+:Soil rdf:type owl:Class ;
+      rdfs:subClassOf :Habitat ;
+      rdfs:comment "A terrestrial environment composed of minerals, organic matter, water, and air. Soil is critical for plant growth and acts as a habitat for microorganisms and other life forms."@en ;
+      rdfs:label "Soil"@en .
+
+
+###  https://purl.dsmz.de/schema/Species
+:Species rdf:type owl:Class ;
+         rdfs:subClassOf :TaxonomicRank ;
+         rdfs:comment "The basic unit of biological classification, representing a group of organisms capable of interbreeding and producing fertile offspring."@en ;
+         rdfs:label "Species"@en .
+
+
+###  https://purl.dsmz.de/schema/Speed
+:Speed rdf:type owl:Class ;
+       rdfs:subClassOf :PropertyOrAttribute ;
+       rdfs:comment "The rate at which an object or organism moves, often expressed as distance traveled per unit of time (e.g., meters per second)."@en ;
+       rdfs:label "Speed"@en .
+
+
+###  https://purl.dsmz.de/schema/SporeFormation
+:SporeFormation rdf:type owl:Class ;
+                rdfs:subClassOf :MicrobialPhenotype ;
+                rdfs:comment "The ability of certain microorganisms to form spores, a resistant structure that allows survival in adverse conditions. Spore formation is a significant trait for microbial classification and survival strategies."@en ;
+                rdfs:label "Spore Formation"@en .
+
+
+###  https://purl.dsmz.de/schema/Stability
+:Stability rdf:type owl:Class ;
+           rdfs:subClassOf :MolecularProperty ;
+           rdfs:comment "A property that describes how resistant a molecule, compound, or material is to changes or degradation over time, under various environmental or chemical conditions."@en ;
+           rdfs:label "Stability"@en .
+
+
+###  https://purl.dsmz.de/schema/Strain
+:Strain rdf:type owl:Class ;
+        rdfs:subClassOf :BiologicalMaterial ;
+        rdfs:comment "A genetic variant or subtype of a microorganism (e.g., bacteria, virus, or fungus). Strains are distinguished by differences in their genetic material, often exhibiting unique traits that can be important for research, medicine, and industrial applications."@en ;
+        rdfs:label "Strain"@en .
+
+
+###  https://purl.dsmz.de/schema/StrainDesignation
+:StrainDesignation rdf:type owl:Class ;
+                   rdfs:subClassOf :StrainNumber ;
+                   rdfs:comment "A name or label assigned to a microbial strain, often reflecting its source or notable characteristics."@en ;
+                   rdfs:label "Strain Designation"@en .
+
+
+###  https://purl.dsmz.de/schema/StrainInfo-ID
+:StrainInfo-ID rdf:type owl:Class ;
+               rdfs:subClassOf :OrganismIdentifier ;
+               rdfs:comment "An identifier used in the StrainInfo database to uniquely refer to a specific microbial strain."@en .
+
+
+###  https://purl.dsmz.de/schema/StrainNumber
+:StrainNumber rdf:type owl:Class ;
+              rdfs:subClassOf :OrganismIdentifier ;
+              rdfs:comment "A unique number or identifier assigned to a specific strain of microorganism, used for identification and reference."@en ;
+              rdfs:label "Strain Number"@en .
+
+
+###  https://purl.dsmz.de/schema/StructuralProtein
+:StructuralProtein rdf:type owl:Class ;
+                   rdfs:subClassOf :Protein ;
+                   rdfs:comment "Proteins that provide mechanical support and shape to cells and tissues. Examples include collagen in connective tissue and keratin in hair and nails."@en ;
+                   rdfs:label "Structural Protein"@en .
+
+
+###  https://purl.dsmz.de/schema/Subphylum
+:Subphylum rdf:type owl:Class ;
+           rdfs:subClassOf :TaxonomicRank ;
+           rdfs:comment "A rank below the phylum, used to classify organisms that share certain characteristics distinct from other members of the same phylum."@en ;
+           rdfs:label "Subphylum"@en .
+
+
+###  https://purl.dsmz.de/schema/Substrate
+:Substrate rdf:type owl:Class ;
+           rdfs:subClassOf :ChemicalRole ;
+           rdfs:comment "A substance on which an enzyme acts during a biochemical reaction, usually being transformed into one or more products."@en ;
+           rdfs:label "Substrate"@en .
+
+
+###  https://purl.dsmz.de/schema/Superphylum
+:Superphylum rdf:type owl:Class ;
+             rdfs:subClassOf :TaxonomicRank ;
+             rdfs:comment "A taxonomic rank used to group together several phyla with common evolutionary traits, placed above phylum."@en ;
+             rdfs:label "Superphylum"@en .
+
+
+###  https://purl.dsmz.de/schema/SurvivalRate
+:SurvivalRate rdf:type owl:Class ;
+              rdfs:subClassOf :Rate ;
+              rdfs:comment "The proportion of individuals in a population that survive over a specified period, often used in ecological and medical studies to assess the effects of environmental conditions or treatments."@en ;
+              rdfs:label "Survival Rate"@en .
+
+
+###  https://purl.dsmz.de/schema/Symbiont
+:Symbiont rdf:type owl:Class ;
+          rdfs:subClassOf :OrganismGroup ;
+          rdfs:comment "An organism that lives in a symbiotic relationship with another organism, where both may benefit, or one may benefit without harming the other."@en ;
+          rdfs:label "Symbiont"@en .
+
+
+###  https://purl.dsmz.de/schema/TaxonomicRank
+:TaxonomicRank rdf:type owl:Class ;
+               rdfs:subClassOf :ConceptualEntity ;
+               rdfs:comment "A hierarchical level in the classification of organisms, used in biological taxonomy to organize living things based on shared characteristics."@en ;
+               rdfs:label "Taxonomic Rank"@en .
+
+
+###  https://purl.dsmz.de/schema/Temperature
+:Temperature rdf:type owl:Class ;
+             rdfs:subClassOf :EnvironmentalCondition ,
+                             :PhysicalParameter ;
+             rdfs:comment "Describes the degree of heat in an environment or cultivation, which can influence biological processes, metabolic rates, and organism survival. Temperature is a key factor in defining the suitable living conditions for many organisms."@en ;
+             rdfs:label "Temperature"@en .
+
+
+###  https://purl.dsmz.de/schema/TemperatureStability
+:TemperatureStability rdf:type owl:Class ;
+                      rdfs:subClassOf :Stability ;
+                      rdfs:comment "The resistance of a substance or molecule to changes in structure or function due to fluctuations in temperature. Temperature stability is critical for enzymes, proteins, and other biomolecules."@en ;
+                      rdfs:label "Temperature Stability"@en .
+
+
+###  https://purl.dsmz.de/schema/Time
+:Time rdf:type owl:Class ;
+      rdfs:subClassOf :PropertyOrAttribute ;
+      rdfs:comment "A property that refers to the duration or specific point when an event occurs. Time is fundamental in measuring processes such as growth, reactions, and changes in biological or chemical systems."@en ;
+      rdfs:label "Time"@en .
+
+
+###  https://purl.dsmz.de/schema/Tissue
+:Tissue rdf:type owl:Class ;
+        rdfs:subClassOf :AnatomicStructure ;
+        rdfs:label "Tissue"@en .
+
+
+###  https://purl.dsmz.de/schema/TranscriptionFactor
+:TranscriptionFactor rdf:type owl:Class ;
+                     rdfs:subClassOf :Protein ;
+                     rdfs:comment "Proteins that bind to specific DNA sequences and regulate the transcription of genetic information from DNA to mRNA. Transcription factors play a crucial role in gene expression, allowing cells to respond to internal and external signals."@en ;
+                     rdfs:label "Transcription Factor"@en .
+
+
+###  https://purl.dsmz.de/schema/Transferases
+:Transferases rdf:type owl:Class ;
+              rdfs:subClassOf :Enzyme ;
+              rdfs:comment "Enzymes that catalyze the transfer of functional groups (e.g., phosphate, methyl, or acyl groups) from one molecule to another. Transferases are involved in numerous metabolic processes, including phosphorylation and glycosylation."@en ;
+              rdfs:label "Transferases"@en .
+
+
+###  https://purl.dsmz.de/schema/Translocases
+:Translocases rdf:type owl:Class ;
+              rdfs:subClassOf :Enzyme ;
+              rdfs:comment "A class of enzymes that assist in the movement of molecules across membranes, such as proteins or nucleic acids. These enzymes are essential for transporting substances into and out of cells or organelles."@en ;
+              rdfs:label "Translocases"@en .
+
+
+###  https://purl.dsmz.de/schema/TransportProcess
+:TransportProcess rdf:type owl:Class ;
+                  rdfs:subClassOf :Process ;
+                  rdfs:comment "The movement of molecules, ions, or other substances across cell membranes or within an organism, which is essential for maintaining homeostasis, nutrient uptake, and waste removal."@en ;
+                  rdfs:label "Transport Process"@en .
+
+
+###  https://purl.dsmz.de/schema/TurnoverNumber
+:TurnoverNumber rdf:type owl:Class ;
+                rdfs:subClassOf :MolecularProperty ;
+                rdfs:comment "The number of substrate molecules converted to product per enzyme molecule per second, under optimal conditions. The turnover number is a measure of enzyme efficiency and catalytic activity."@en ;
+                rdfs:label "Turnover Number"@en .
+
+
+###  https://purl.dsmz.de/schema/TypeStrain
+:TypeStrain rdf:type owl:Class ;
+            rdfs:subClassOf :OrganismGroup ;
+            rdfs:comment "A strain of a microorganism that is used as the reference strain for defining a species. Type strains are essential for taxonomic classification."@en ;
+            rdfs:label "Type Strain"@en .
+
+
+###  https://purl.dsmz.de/schema/UncategorizedTaxon
+:UncategorizedTaxon rdf:type owl:Class ;
+                    rdfs:subClassOf :TaxonomicRank ;
+                    rdfs:comment "A placeholder category for organisms that have not been definitively classified into a specific taxonomic rank."@en ;
+                    rdfs:label "Uncategorized Taxon"@en .
+
+
+###  https://purl.dsmz.de/schema/UnicellularAlgae
+:UnicellularAlgae rdf:type owl:Class ;
+                  rdfs:subClassOf :Eukaryotes ;
+                  rdfs:comment "Photosynthetic eukaryotic microorganisms found in aquatic environments. These algae are important for their role in producing oxygen and serving as the base of many aquatic food chains."@en ;
+                  rdfs:label "Unicellular Algae"@en .
+
+
+###  https://purl.dsmz.de/schema/UnicellularFungi
+:UnicellularFungi rdf:type owl:Class ;
+                  rdfs:subClassOf :Eukaryotes ;
+                  rdfs:comment "Fungi that exist as a single cell, such as yeast. These organisms are often involved in fermentation processes and can also be pathogens or symbiotic organisms."@en ;
+                  rdfs:label "Unicellular Fungi"@en .
+
+
+###  https://purl.dsmz.de/schema/Uniprot-ID
+:Uniprot-ID rdf:type owl:Class ;
+            rdfs:subClassOf :ProteinIdentifier ;
+            rdfs:comment "An identifier used by the UniProt database to uniquely refer to a specific protein sequence and its related data."@en .
+
+
+###  https://purl.dsmz.de/schema/UnitOfMeasure
+:UnitOfMeasure rdf:type owl:Class ;
+               rdfs:subClassOf :PropertyOrAttribute ;
+               rdfs:comment "A standardized quantity used to express and measure physical, chemical, or biological attributes, such as meters, liters, grams, or moles."@en ;
+               rdfs:label "Unit OfMeasure"@en .
+
+
+###  https://purl.dsmz.de/schema/Urine
+:Urine rdf:type owl:Class ;
+       rdfs:subClassOf :BodyFluid ;
+       rdfs:label "Urine"@en .
+
+
+###  https://purl.dsmz.de/schema/Value
+:Value rdf:type owl:Class ;
+       rdfs:subClassOf :PropertyOrAttribute ;
+       rdfs:comment "A numerical or qualitative representation of a property or attribute, often used to quantify characteristics such as size, concentration, or rate."@en ;
+       rdfs:label "Value"@en .
+
+
+###  https://purl.dsmz.de/schema/Volume
+:Volume rdf:type owl:Class ;
+        rdfs:subClassOf :PropertyOrAttribute ;
+        rdfs:comment "The amount of three-dimensional space occupied by a substance or object, typically measured in liters or cubic meters."@en ;
+        rdfs:label "Volume"@en .
+
+
+###  https://purl.dsmz.de/schema/Weight
+:Weight rdf:type owl:Class ;
+        rdfs:subClassOf :PropertyOrAttribute ;
+        rdfs:comment "The force exerted by gravity on an object, often expressed in grams, kilograms, or other units of mass."@en ;
+        rdfs:label "Weight"@en .
+
+
+###  https://purl.dsmz.de/schema/Width
+:Width rdf:type owl:Class ;
+       rdfs:subClassOf :Size ;
+       rdfs:comment "A measure of the distance from one side of an object to the other, typically in a dimension perpendicular to its length."@en ;
+       rdfs:label "Width"@en .
+
+
+###  https://purl.dsmz.de/schema/XLSX
+:XLSX rdf:type owl:Class ;
+      rdfs:subClassOf :FileFormat ;
+      rdfs:comment "A spreadsheet file format used by Microsoft Excel, typically storing tabular data with rows and columns, which can include text, numbers, and formulas."@en ;
+      rdfs:label "XLSX"@en .
+
+
+###  https://purl.dsmz.de/schema/XML
+:XML rdf:type owl:Class ;
+     rdfs:subClassOf :FileFormat ;
+     rdfs:comment "An extensible markup language used for encoding documents in a format that is both human-readable and machine-readable. XML is used for data interchange between systems."@en ;
+     rdfs:label "XML"@en .
+
+
+###  https://purl.dsmz.de/schema/YAML
+:YAML rdf:type owl:Class ;
+      rdfs:subClassOf :FileFormat ;
+      rdfs:comment "A human-readable data serialization format commonly used for configuration files and data exchange between applications."@en ;
+      rdfs:label "YAML"@en .
+
+
+###  https://purl.dsmz.de/schema/gcMethod
+:gcMethod rdf:type owl:Class ;
+          rdfs:subClassOf :Method ;
+          rdfs:comment "A method referring to Gas Chromatography (GC), a technique used to separate and analyze compounds that can be vaporized without decomposition. It is commonly used in chemistry for qualitative and quantitative analysis."@en ;
+          rdfs:label "gc Method"@en .
+
+
+###  https://purl.dsmz.de/schema/kcat
+:kcat rdf:type owl:Class ;
+      rdfs:subClassOf :MolecularProperty ;
+      rdfs:comment "The catalytic constant (kcat) is a measure of the efficiency of an enzyme in converting substrate molecules to product per unit time, providing insights into enzyme activity and turnover."@en ;
+      rdfs:label "kcat"@en .
+
+
+###  https://purl.dsmz.de/schema/mRNA
+:mRNA rdf:type owl:Class ;
+      rdfs:subClassOf :GeneProduct ;
+      rdfs:comment "A type of RNA that carries genetic information from DNA to the ribosome, where it is used as a template for protein synthesis. mRNA serves as the intermediary between a gene and its corresponding protein product."@en ;
+      rdfs:label "mRNA"@en .
+
+
+###  https://purl.dsmz.de/schema/ncRNA
+:ncRNA rdf:type owl:Class ;
+       rdfs:subClassOf :GeneProduct ;
+       rdfs:comment "RNA molecules that do not encode proteins but have important roles in gene regulation, RNA processing, and structural functions. Examples include microRNAs (miRNAs) and long non-coding RNAs (lncRNAs)."@en ;
+       rdfs:label "ncRNA"@en .
+
+
+###  https://purl.dsmz.de/schema/pH
+:pH rdf:type owl:Class ;
+    rdfs:subClassOf :EnvironmentalCondition ,
+                    :PhysicalParameter ;
+    rdfs:comment "A measure of the acidity or alkalinity of an environment, which can affect the biological processes of organisms. pH is critical for enzyme activity, microbial growth, and the solubility of nutrients in an environment. Different organisms thrive at different pH levels, from acidic to neutral to alkaline environments."@en ;
+    rdfs:label "pH"@en .
+
+
+###  https://purl.dsmz.de/schema/pHStability
+:pHStability rdf:type owl:Class ;
+             rdfs:subClassOf :Stability ;
+             rdfs:comment "The ability of a molecule, compound, or material to maintain its structural integrity or functional properties when exposed to different pH levels, which is important for enzymes and other biological molecules."@en ;
+             rdfs:label "pHStability"@en .
+
+
+###  https://purl.dsmz.de/schema/rRNA
+:rRNA rdf:type owl:Class ;
+      rdfs:subClassOf :GeneProduct ;
+      rdfs:comment "A type of RNA that forms the structural and functional components of the ribosome, the molecular machine responsible for protein synthesis."@en ;
+      rdfs:label "rRNA"@en .
+
+
+###  https://purl.dsmz.de/schema/rRNASequence
+:rRNASequence rdf:type owl:Class ;
+              rdfs:subClassOf :RNASequence ;
+              rdfs:comment "The nucleotide sequence that composes ribosomal RNA (rRNA), a key component of ribosomes, which are responsible for protein synthesis in all living cells."@en ;
+              rdfs:label "rRNASequence"@en .
+
+
+###  https://purl.dsmz.de/schema/tRNA
+:tRNA rdf:type owl:Class ;
+      rdfs:subClassOf :GeneProduct ;
+      rdfs:comment "A type of RNA that helps decode mRNA sequences into proteins during translation. Each tRNA molecule carries a specific amino acid to the ribosome and matches it to the corresponding codon in the mRNA through its anticodon region."@en ;
+      rdfs:label "tRNA"@en .
+
+
+###  https://purl.dsmz.de/schema/16SBacterial
+<https://purl.dsmz.de/schema/16SBacterial> rdf:type owl:Class ;
+                                           rdfs:subClassOf :SSU ;
+                                           rdfs:comment "The small subunit rRNA found in bacterial ribosomes, widely used as a molecular marker for identifying and classifying bacteria."@en ;
+                                           rdfs:label "16S (Bacterial)"@en .
+
+
+###  https://purl.dsmz.de/schema/16SMitochondrial
+<https://purl.dsmz.de/schema/16SMitochondrial> rdf:type owl:Class ;
+                                               rdfs:subClassOf :SSU ;
+                                               rdfs:comment "The small subunit rRNA found in mitochondrial ribosomes, playing a role in mitochondrial protein synthesis."@en ;
+                                               rdfs:label "16S (Mitochondrial)"@en .
+
+
+###  https://purl.dsmz.de/schema/16SSequence
+<https://purl.dsmz.de/schema/16SSequence> rdf:type owl:Class ;
+                                          rdfs:subClassOf :rRNASequence ;
+                                          rdfs:comment "The sequence of the 16S ribosomal RNA gene, which is highly conserved among bacteria and archaea. It is widely used for phylogenetic studies and microbial identification."@en ;
+                                          rdfs:label "16SSequence"@en .
+
+
+###  https://purl.dsmz.de/schema/18S
+<https://purl.dsmz.de/schema/18S> rdf:type owl:Class ;
+                                  rdfs:subClassOf :SSU ;
+                                  rdfs:comment "The small subunit rRNA found in eukaryotic ribosomes, responsible for the accurate translation of mRNA into proteins."@en ;
+                                  rdfs:label "18S"@en .
+
+
+###  https://purl.dsmz.de/schema/23SBacterial
+<https://purl.dsmz.de/schema/23SBacterial> rdf:type owl:Class ;
+                                           rdfs:subClassOf :LSU ;
+                                           rdfs:comment "The large subunit rRNA found in bacterial ribosomes, playing a key role in the catalytic activity of the ribosome."@en ;
+                                           rdfs:label "23S (Bacterial)"@en .
+
+
+###  https://purl.dsmz.de/schema/23SMitochondrial
+<https://purl.dsmz.de/schema/23SMitochondrial> rdf:type owl:Class ;
+                                               rdfs:subClassOf :LSU ;
+                                               rdfs:comment "The large subunit rRNA found in mitochondrial ribosomes, distinct from its bacterial counterpart but performing a similar function in protein synthesis within mitochondria."@en ;
+                                               rdfs:label "23S (Mitochondrial)"@en .
+
+
+###  https://purl.dsmz.de/schema/28S
+<https://purl.dsmz.de/schema/28S> rdf:type owl:Class ;
+                                  rdfs:subClassOf :LSU ;
+                                  rdfs:comment "The large subunit rRNA found in eukaryotic ribosomes, involved in catalyzing peptide bond formation during translation."@en ;
+                                  rdfs:label "28S"@en .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:BRENDALigand rdfs:label "BRENDA Ligand"@en .
+
+
+:BioCycCompound rdfs:label "BioCyc Compound"@en .
+
+
+:ChEBI rdfs:label "ChEBI"@en .
+
+
+:ChEMBL rdfs:label "ChEMBL"@en .
+
+
+:ChemSpider rdfs:label "Chem Spider"@en .
+
+
+:DrugOrDisease rdfs:label "Drug or Disease"@en .
+
+
+:KEGGCompound rdfs:label "KEGGCompound"@en .
+
+
+:Multi rdfs:label "Multi"@en .
+
+
+:PDB rdfs:label "PDB"@en .
+
+
+:PubChem rdfs:label "Pub Chem"@en .
+
+
+:StrainInfo rdfs:label "StrainInfo"@en .
+
+
+:Uniprot rdfs:label "Uniprot"@en .
+
+
+<https://purl.dsmz.de/schema/#Archaea> rdfs:comment "microorganisms which are similar to bacteria in size and simplicity of structure but radically different in molecular organization."@en .
+
+
+<https://purl.dsmz.de/schema/#Bacteria> rdfs:comment "a member of a large group of unicellular microorganisms which have cell walls but lack organelles and an organized nucleus, including some which can cause disease."@en .
+
+
+<https://purl.dsmz.de/schema/#BiologicalMaterial> rdfs:comment "a living thing that has (or can develop) the ability to act or function independently."@en .
+
+
+<https://purl.dsmz.de/schema/#Embryophyte> rdfs:comment "Embryophytes are complex multicellular eukaryotes with specialized reproductive organs."@en ;
+                                           rdfs:label "Land Plants" .
+
+
+<https://purl.dsmz.de/schema/#Eukaryotes> rdfs:comment "Eukaryotic cells contain membrane bound organelles, such as mitochondria, a nucleus, and chloroplasts."@en .
+
+
+<https://purl.dsmz.de/schema/#Metazoa> rdfs:comment "Metazoa (also called Animals) are multicellular eukaryotic organisms that form the biological kingdom Animalia"@en .
+
+
+<https://purl.dsmz.de/schema/#Microorganism> rdfs:comment "A unicellular organism, also known as a single-celled organism, is an organism that consists of a single cell."@en .
+
+
+<https://purl.dsmz.de/schema/#MulticelluarOrganism> rdfs:comment "Multicellular organisms are organisms that consist of more than one cell, in contrast to unicellular organisms."@en .
+
+
+<https://purl.dsmz.de/schema/#Prokaryotes> rdfs:comment "Prokaryotes lack membrane-bound organelles, such as mitochondria or a nucleus."@en .
+
+
+<https://purl.dsmz.de/schema/#Protozoa> rdfs:comment "Protozoa are largely defined by their method of locomotion, including flagella, cilia, and pseudopodia."@en .
+
+
+<https://purl.dsmz.de/schema/#UnicellularAlgae> rdfs:comment "Unicellular algae are plant-like autotrophs and contain chlorophyll."@en .
+
+
+<https://purl.dsmz.de/schema/#UnicellularFungi> rdfs:comment "Unicellular fungi include the yeasts. Fungi are found in most habitats, although most are found on land."@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AminoAcidMetabolism
+                :CarbohydratePathway
+                :CofactorsAndVitaminsMetabolism
+                :DegradationPathway
+                :EnergyMetabolism
+                :GlycanMetabolism
+                :LipidMetabolism
+                :NucleotideMetabolism
+                :SecondaryMetaboliteBiosynthesis
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AnimalPathogenicity
+                :HumanPathogenicity
+                :PlantPathogenicity
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AnorganicMolecule
+                :Gas
+                :Salt
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BRENDALigand-ID
+                :BioCycCompound-ID
+                :CASRegistryNumber
+                :ChEBI-ID
+                :ChEMBL-ID
+                :ChemSpider-ID
+                :KEGGCompound-ID
+                :PubChem-ID
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BiochemicalPathway
+                :BiochemicalReaction
+                :EnzymeActivityAlteration
+                :GeneExpression
+                :MetabolicProcess
+                :TransportProcess
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BiologicalRole
+                :ChemicalRole
+                :CultureCondition
+                :Environment
+                :FileFormat
+                :FunctionalAnnotation
+                :GeographicArea
+                :Mutation
+                :OrganismGroup
+                :Pathogenicity
+                :TaxonomicRank
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Blood
+                :Lymph
+                :Mucus
+                :Serum
+                :Urine
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BodyFluid
+                :Organ
+                :Tissue
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CarbonSource
+                :CultivationCondition
+                :EnergySource
+                :NitrogenSource
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Chaperone
+                :Cytokine
+                :Enzyme
+                :GrowthFactor
+                :Riboprotein
+                :StructuralProtein
+                :TranscriptionFactor
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ChemicalCompound
+                :CultivationMedium
+                :Drug
+                :FoodOrFoodProduct
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Class
+                :Domain
+                :Family
+                :Genus
+                :Kingdom
+                :Order
+                :Phylum
+                :Species
+                :Subphylum
+                :Superphylum
+                :UncategorizedTaxon
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cofactor
+                :Effector
+                :ElectronAcceptor
+                :Ingredient
+                :Product
+                :Substrate
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Color
+                :Concentration
+                :Contamination
+                :Density
+                :Diversity
+                :ExpressionLevel
+                :Feature
+                :Gender
+                :GeographicLocation
+                :Humidity
+                :MolecularProperty
+                :PhysicalParameter
+                :Precision
+                :Rate
+                :Shape
+                :Size
+                :Speed
+                :Time
+                :UnitOfMeasure
+                :Value
+                :Volume
+                :Weight
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CompoundIdentifier
+                :CompoundName
+                :EnzymeIdentifier
+                :GeneIdentifier
+                :GenomeIdentifier
+                :ProteinIdentifier
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CultureCollectionNumber
+                :StrainDesignation
+                :StrainInfo-ID
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DOI
+                :OpenAlexID
+                :PubmedID
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DrugOrDisease-associatedPathway
+                :MetabolicPathway
+                :MotilityPathway
+                :RegulatoryPathway
+                :SignalingPathway
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :EnsemblGeneID
+                :LocusTag
+                :NCBIGeneID
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :EnsemblProteinID
+                :PDB-ID
+                :Uniprot-ID
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :FASTA
+                :FASTQ
+                :HTML
+                :JSON
+                :OBO
+                :RDF
+                :XLSX
+                :XML
+                :YAML
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :FlowRate
+                :GrowthRate
+                :ReactionRate
+                :SurvivalRate
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :GCContent
+                :IC50
+                :Km
+                :MolecularWeight
+                :Purification
+                :Stability
+                :TurnoverNumber
+                :kcat
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :GeneralStability
+                :OxidationStability
+                :TemperatureStability
+                :pHStability
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :GrowthPH
+                :MaximumPH
+                :MinimumPH
+                :OptimumPH
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :GrowthSalinity
+                :MaximumSalinity
+                :MinimumSalinity
+                :OptimumSalinity
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :GrowthTemperature
+                :MaximumTemperature
+                :MinimumTemperature
+                :OptimumTemperature
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Height
+                :Length
+                :Width
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Hydrolases
+                :Isomerases
+                :Ligases
+                :Lyases
+                :Oxidoreductases
+                :Transferases
+                :Translocases
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :IUPACName
+                :Inchi
+                :InchiKey
+                :SMILES
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :IndustrialWaste
+                :Lake
+                :Sea
+                :Soil
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Light
+                :Pressure
+                :Salinity
+                :Temperature
+                :pH
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :LiteratureIdentifier
+                :MoleculeIdentifier
+                :OrganismIdentifier
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Protein
+                :mRNA
+                :ncRNA
+                :rRNA
+                :tRNA
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://purl.dsmz.de/schema/16SBacterial>
+                <https://purl.dsmz.de/schema/16SMitochondrial>
+                <https://purl.dsmz.de/schema/18S>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://purl.dsmz.de/schema/23SBacterial>
+                <https://purl.dsmz.de/schema/23SMitochondrial>
+                <https://purl.dsmz.de/schema/28S>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
