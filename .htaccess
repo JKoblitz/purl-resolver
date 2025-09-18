@@ -3,7 +3,7 @@
 Options -Indexes
 
 RewriteEngine On
-RewriteBase /purl
+RewriteBase /
 RewriteRule ^schema.* index.php [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

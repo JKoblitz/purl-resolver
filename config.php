@@ -1,7 +1,7 @@
 <?php
 return [
     // base URL
-    'base_url' => '/purl',
+    'base_url' => '',
   // Simple redirect patterns (Regex => Target with $1, $2…)
   'redirects' => [
     // BACDIVE
@@ -30,7 +30,6 @@ return [
     // "#^/brenda/reaction/S/(\d+)$#" => 'https://brenda-enzymes.org/$1',
     "#^/brenda/reference/(\d+)$#" => 'https://brenda-enzymes.org/literature.php?r=$1',
     // "#^/brenda/substrate/(\d+)$#" => 'https://brenda-enzymes.org/$1',
-
     '#^/brenda/enzyme/(.+)$#' => 'https://www.brenda-enzymes.org/enzyme.php?ecno=$1',
     '#^/brenda/(.+)$#' => 'https://www.brenda-enzymes.org/purl/$1', # catch-all for brenda
   ],
