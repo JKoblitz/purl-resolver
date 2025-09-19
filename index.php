@@ -49,15 +49,7 @@ if ($baseUrl !== '' && str_starts_with($path, $baseUrl)) {
 if ($path === '' || $path === '/') {
     // Root: einfache HTML-Seite
     include __DIR__ . '/templates/header.php';
-    echo "<h1>DSMZ PURL Service</h1>\n";
-    echo "<p>This service provides persistent URLs (PURLs) for various DSMZ resources and ontologies.</p>\n";
-    echo "<h2>Usage</h2>\n";
-    echo "<p>Append paths like <code>/bacdive/strain/1234</code> or <code>/schema/TermName</code> to the base URL.</p>\n";
-    echo "<h2>Examples</h2>\n<ul>\n";
-    echo "<li><a href=\"{$config['base_url']}/bacdive/strain/1234\">{$config['base_url']}/bacdive/strain/1234</a></li>\n";
-    echo "<li><a href=\"{$config['base_url']}/mediadive/medium/M123\">{$config['base_url']}/mediadive/medium/M123</a></li>\n";
-    echo "<li><a href=\"{$config['base_url']}/brenda/enzyme/1\">{$config['base_url']}/brenda/enzyme/1</a></li>\n";
-    echo "</ul>\n";
+    include __DIR__ . '/templates/home.php';
     include __DIR__ . '/templates/footer.php';
     exit;
 }
