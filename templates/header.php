@@ -36,13 +36,12 @@
         <div class="sidebar-overlay" onclick="digidive.toggleSidebar()"></div>
 
         <!-- Navbar start -->
-        <div class="navbar navbar-top">
-            <div class="container w-600">
-                <a href="//hub.dsmz.de" class="navbar-brand ml-0">
+        <div class="navbar navbar-bottom" style="height:8rem;">
+            <div class="container w-600 mw-full">
+                <a href="//hub.dsmz.de" class="">
                     <!-- DSMZ Logo is mandatory -->
                     <img src="<?= $config['base_url'] ?>/img/digital-diversity.png" alt="DSMZ Digital Diversity" style="height:6rem;">
                 </a>
-
             </div>
         </div>
 
@@ -132,4 +131,4 @@
         <div class="content-wrapper">
             <!-- OPTIONAL: title-bar -->
             <div class="content-container">
-                <div class="container w-600">
+                <div class="container w-600 mw-full">
